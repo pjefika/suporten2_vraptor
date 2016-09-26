@@ -18,7 +18,7 @@ public class Rede {
 	@NotEmpty(message="Campo obrigatório!")
 	private String nome;
 	
-	private Boolean ativo = false;
+	private Boolean ativo = true;
 	
 	public Rede() {
 

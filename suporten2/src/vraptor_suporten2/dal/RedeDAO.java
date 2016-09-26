@@ -31,6 +31,17 @@ public class RedeDAO {
 		}
 
 	}
+	
+	public Rede buscarRedePorNome(Rede r){
+		
+		try {
+			Query query = this.entityManager.createQuery("FROM Rede r WHERE r.nome =:param1");
+			query.setParameter("param1", r.getNome());
+			return (Rede) query.getSingleResult();
+		} catch (Exception e) {
+			return null;
+		}
+	}
 
 	public void cadastrar(Rede rede) {
 		this.entityManager.persist(rede);
