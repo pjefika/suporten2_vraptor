@@ -3,7 +3,6 @@
 ## Desenvolvedor
   - Henrique Antonio Merlin Junior;
   
-## Detalhes:
 ### Framework:
  - Vraptor 4;
 ### Templates:
