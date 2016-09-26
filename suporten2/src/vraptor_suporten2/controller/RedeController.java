@@ -2,7 +2,6 @@ package vraptor_suporten2.controller;
 
 import java.util.List;
 
-import javax.annotation.Resource;
 import javax.faces.bean.RequestScoped;
 import javax.inject.Inject;
 import javax.validation.Valid;
