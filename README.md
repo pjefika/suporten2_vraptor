@@ -4,13 +4,13 @@
   - Henrique Antonio Merlin Junior;
   
 ### Framework:
- - Vraptor 4;
- 
+- Vraptor 4;
+
 ### Templates:
- - Sitemesh;
- 
+- Sitemesh;
+
 ### ORM:
- - JPA;
- 
+- JPA;
+
 ### WS:
- - SOAP;
+- SOAP;
