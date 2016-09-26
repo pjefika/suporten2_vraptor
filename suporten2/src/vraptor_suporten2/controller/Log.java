@@ -15,23 +15,20 @@ import vraptor_suporten2.model.annotation.Admin;
 @RequestScoped
 @AcceptsWithAnnotations(Admin.class)
 public class Log {
-	
+
 	@Inject
 	private SessionUsuarioEfika session;
-	
- 	@Inject
- 	private Result result;
- 	
- 	public Log() {
+
+	@Inject
+	private Result result;
+
+	public Log() {
 		session = new SessionUsuarioEfika();
 	}
-	
-    @BeforeCall
-    public void before() {
-    	
-    	if(!this.session.logado()){
-    		result.use(Results.logic()).redirectTo(UsuarioController.class).form();
-    	}
-    }
+
+	@BeforeCall
+	public void before() {
+		result.use(Results.logic()).redirectTo(UsuarioController.class).form();
+	}
 
 }
