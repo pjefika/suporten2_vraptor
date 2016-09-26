@@ -18,6 +18,8 @@ public class Rede {
 	@NotEmpty(message="Campo obrigatório!")
 	private String nome;
 	
+	private Boolean ativo = false;
+	
 	public Rede() {
 
 	}
@@ -40,6 +42,14 @@ public class Rede {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public Boolean getAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(Boolean ativo) {
+		this.ativo = ativo;
 	}
 	
 	

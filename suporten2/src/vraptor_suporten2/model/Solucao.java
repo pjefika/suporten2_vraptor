@@ -5,12 +5,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-@Table(name="SuporteN2_Causa")
-public class Causa{
+@Table(name="SuporteN2_Solucao")
+public class Solucao{
 	
 	@Id
 	@GeneratedValue
@@ -22,6 +23,7 @@ public class Causa{
 	private Boolean ativo = false;
 	
 	@ManyToOne
+	@NotNull(message="Não pode ser nulo.")
 	private Motivo motivo;
 
 	public Integer getId() {
