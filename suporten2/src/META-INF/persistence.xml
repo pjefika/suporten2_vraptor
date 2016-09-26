@@ -10,6 +10,7 @@
 		<class>vraptor_suporten2.model.Motivo</class>
 		<class>vraptor_suporten2.model.MacroMotivo</class>
 		<class>vraptor_suporten2.model.Causa</class>
+		<class>vraptor_suporten2.model.UsuarioEfika</class>
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect" />
 			<property name="hibernate.hbm2ddl.auto" value="create" />
