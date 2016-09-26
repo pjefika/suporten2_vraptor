@@ -17,12 +17,12 @@
 	<form action="${linkTo[UsuarioController].login}" method="post">
 		<div class="form-group">
 			<label for="login">Login</label> <input
-				type="text" class="form-control" id="login"
+				type="text" class="form-control" id="login" name="u.login"
 				placeholder="Login">
 		</div>
 		<div class="form-group">
 			<label for="senha">Senha</label> <input
-				type="password" class="form-control" id="senha"
+				type="password" class="form-control" id="senha" name="u.senha"
 				placeholder="Senha">
 		</div>
 		<button type="submit" class="btn btn-default">Login</button>

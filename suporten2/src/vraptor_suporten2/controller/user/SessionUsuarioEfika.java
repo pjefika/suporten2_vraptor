@@ -15,6 +15,10 @@ public class SessionUsuarioEfika implements Serializable {
 	public SessionUsuarioEfika() {
 
 	}
+	
+	public SessionUsuarioEfika(Usuario usuario) {
+		this.usuario = usuario;
+	}
 
 	public Usuario getUsuario() {
 		return usuario;
