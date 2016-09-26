@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<title><decorator:title default="Default" /></title>
+<title><decorator:title default="Suporte N2" /></title>
 <meta charset="utf-8">
 <link
 	href="${pageContext.request.contextPath}/resources/bootstrap-3.3.7-dist/css/bootstrap.min.css"
@@ -18,6 +18,7 @@
 <script
 	src="${pageContext.request.contextPath}/resources/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 
+<decorator:head/>
 </head>
 <body>
 
@@ -32,7 +33,7 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Bootstrap theme</a>
+				<a class="navbar-brand" href="#">SuporteN2</a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
