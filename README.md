@@ -6,12 +6,12 @@
 ## Detalhes:
 ### Framework:
  - Vraptor 4;
- 
+
 ### Templates:
  - Sitemesh;
- 
+
 ### ORM:
  - JPA;
- 
+
 ### WS:
  - SOAP;
