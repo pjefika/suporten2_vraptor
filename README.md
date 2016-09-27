@@ -1,6 +1,6 @@
 # SuporteN2 
 
-## Desenvolvedor
+## Desenvolvedores:
   - Henrique Antonio Merlin Junior;
   - Matheus Henrique Agibert;
   
