@@ -2,6 +2,7 @@
 
 ## Desenvolvedor
   - Henrique Antonio Merlin Junior;
+  - Matheus Henrique Agibert;
   
 ### Framework:
 - Vraptor 4;
