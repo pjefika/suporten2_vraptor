@@ -10,13 +10,13 @@ import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.validator.Validator;
 import br.com.caelum.vraptor.view.Results;
-import vraptor_suporten2.dal.RedeDAO;
-import vraptor_suporten2.model.Rede;
+import vraptor_suporten2.dal.SolucaoDAO;
+import vraptor_suporten2.model.Solucao;
 import vraptor_suporten2.model.annotation.Admin;
 
 @Controller
 @RequestScoped
-public class RedeController {
+public class SolucaoController {
 
 	@Inject
 	private Result result;
@@ -25,9 +25,9 @@ public class RedeController {
 	private Validator validation;
 
 	@Inject
-	private RedeDAO dao;
+	private SolucaoDAO dao;
 
-	public RedeController() {
+	public SolucaoController() {
 
 	}
 
@@ -37,23 +37,23 @@ public class RedeController {
 	}
 
 	@Admin
-	public List<Rede> list() {
+	public List<Solucao> list() {
 		return dao.listar();
 	}
 
 	@Admin
-	public void add(@Valid Rede r) {
+	public void add(@Valid Solucao s) {
 
 		validation.onErrorForwardTo(this).create();
 
 		try {
 
-			if(dao.buscarPorNome(r) == null){
-				dao.cadastrar(r);
-				result.include("mensagem", r.getClass().getSimpleName() + " adicionada com sucesso!");
-				result.use(Results.logic()).redirectTo(RedeController.class).list();
+			if(dao.buscarPorNome(s) == null){
+				dao.cadastrar(s);
+				result.include("mensagem", s.getClass().getSimpleName() + " adicionado com sucesso!");
+				result.use(Results.logic()).redirectTo(SolucaoController.class).list();
 			}else{
-				result.include("mensagemFalha", r.getClass().getSimpleName() + ": " + r.getNome() + " já existente!");
+				result.include("mensagemFalha", s.getClass().getSimpleName() + ": " + s.getNome() + " já existente!");
 				result.forwardTo(this).create();
 			}
 		} catch (Exception e) {

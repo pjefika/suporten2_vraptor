@@ -7,44 +7,43 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-
-import vraptor_suporten2.model.Rede;
+import vraptor_suporten2.model.Motivo;
 
 @Stateless
-public class RedeDAO {
+public class MotivoDAO {
 
 	@PersistenceContext
 	private EntityManager entityManager;
 
-	public RedeDAO() {
+	public MotivoDAO() {
 
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Rede> listar(){
+	public List<Motivo> listar(){
 
 		try {
-			Query query = this.entityManager.createQuery("FROM Rede r");
+			Query query = this.entityManager.createQuery("FROM Motivo m");
 			return query.getResultList();
 		} catch (Exception e) {
-			return new ArrayList<Rede>();
+			return new ArrayList<Motivo>();
 		}
 
 	}
 	
-	public Rede buscarPorNome(Rede r){
+	public Motivo buscarPorNome(Motivo m){
 		
 		try {
-			Query query = this.entityManager.createQuery("FROM Rede r WHERE r.nome =:param1");
-			query.setParameter("param1", r.getNome());
-			return (Rede) query.getSingleResult();
+			Query query = this.entityManager.createQuery("FROM Motivo m WHERE m.nome =:param1");
+			query.setParameter("param1", m.getNome());
+			return (Motivo) query.getSingleResult();
 		} catch (Exception e) {
 			return null;
 		}
 	}
 
-	public void cadastrar(Rede rede) {
-		this.entityManager.persist(rede);
+	public void cadastrar(Motivo m) {
+		this.entityManager.persist(m);
 	}
 
 }
