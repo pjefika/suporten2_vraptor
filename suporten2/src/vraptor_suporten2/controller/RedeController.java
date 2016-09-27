@@ -32,29 +32,29 @@ public class RedeController {
 	}
 
 	@Admin
-	public void form() {
+	public void create() {
 
 	}
 
 	@Admin
-	public List<Rede> lista() {
+	public List<Rede> list() {
 		return dao.listar();
 	}
 
 	@Admin
 	public void add(@Valid Rede r) {
 
-		validation.onErrorForwardTo(this).form();
+		validation.onErrorForwardTo(this).create();
 
 		try {
 
 			if(dao.buscarRedePorNome(r) == null){
 				dao.cadastrar(r);
 				result.include("mensagem", r.getClass().getSimpleName() + " adicionada com sucesso!");
-				result.use(Results.logic()).redirectTo(RedeController.class).lista();
+				result.use(Results.logic()).redirectTo(RedeController.class).list();
 			}else{
 				result.include("mensagemFalha", r.getClass().getSimpleName() + ": " + r.getNome() + " já existente!");
-				result.forwardTo(this).form();
+				result.forwardTo(this).create();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

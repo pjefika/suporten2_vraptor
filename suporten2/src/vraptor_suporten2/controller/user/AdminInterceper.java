@@ -26,7 +26,7 @@ public class AdminInterceper {
 
 	@BeforeCall
 	public void before() {
-		if(session == null || session.getUsuario().getNivel() < 7){
+		if(session == null || !session.isAdmin()){
 			result.redirectTo(UsuarioController.class).restrito();
 		}
 	}

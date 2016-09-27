@@ -27,7 +27,7 @@ public class UsuarioController {
 		ws = new EfikaUsersProxy();
 	}
 	
-	public void form(){
+	public void create(){
 	}
 
 	public void login(@Valid Usuario u){
@@ -38,17 +38,17 @@ public class UsuarioController {
 				
 				session = new SessionUsuarioEfika(u);
 				result.include("mensagemFalha", "Login!" + session.getUsuario().getLogin() + " " + session.getUsuario().getNivel());
-				result.forwardTo(this).form();
+				result.forwardTo(this).create();
 				
 			}else{
 				
 				result.include("mensagemFalha", "Credênciais incorrentas.");
-				result.forwardTo(this).form();
+				result.forwardTo(this).create();
 			}
 			
 		} catch (RemoteException e) {
 			result.include("mensagemFalha", e.getMessage());
-			result.forwardTo(this).form();
+			result.forwardTo(this).create();
 		}
 	}
 	
