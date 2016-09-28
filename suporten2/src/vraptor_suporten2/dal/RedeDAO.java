@@ -42,9 +42,25 @@ public class RedeDAO {
 			return null;
 		}
 	}
-
+	
+	public Rede buscarPorId(Rede r){
+		
+		try {
+			Query query = this.entityManager.createQuery("FROM Rede r WHERE r.id =:param1");
+			query.setParameter("param1", r.getId());
+			return (Rede) query.getSingleResult();
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	
+	
 	public void cadastrar(Rede rede) {
 		this.entityManager.persist(rede);
+	}
+	
+	public void editar(Rede rede){
+		this.entityManager.merge(rede);
 	}
 
 }

@@ -16,12 +16,18 @@
 	<thead>
 		<tr>
 			<th>Nome</th>
+			<th>Editar</th>
 		</tr>
 	</thead>
 	<tbody>
 		<c:forEach items="${redeList}" var="rede">
 			<tr>
 				<td>${rede.nome}</td>
+				<td>
+					<a href="${linkTo[RedeController].edit()}${rede.id}" class="btn btn-default">${rede.id}
+						<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+					</a>
+				</td>
 			</tr>
 		</c:forEach>
 	</tbody>

@@ -1,10 +1,8 @@
 package vraptor_suporten2.controller;
 
-import java.rmi.RemoteException;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
-import javax.inject.Named;
 
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Result;
@@ -14,30 +12,25 @@ import webservices.Usuario;
 
 @Controller
 @RequestScoped
-@Named
 public class UsuarioController {
 
-    @Inject
+	@Inject
     private Result result;
-    
-    private EfikaUsersProxy ws;
-    
-    @Inject
+	
+	@Inject
     private SessionUsuarioEfika session;
+    
+    private EfikaUsersProxy ws;    
 	
     public UsuarioController() {
 
     }
     
-    public UsuarioController(Result result) {
-    	this.result = result;
-    }    
-    
 	public void create(){
 	}
 	
 	public void detail(){
-		result.include("usuario", session.getUsuario());
+		//result.include("usuario", session.getUsuario());
 	}
 	
 	public void login(Usuario u){
@@ -60,7 +53,7 @@ public class UsuarioController {
 				result.forwardTo(this).create();
 			}
 			
-		} catch (RemoteException e) {
+		} catch (Exception e) {
 			
 			result.include("mensagemFalha", e.getMessage());
 			result.forwardTo(this).create();
