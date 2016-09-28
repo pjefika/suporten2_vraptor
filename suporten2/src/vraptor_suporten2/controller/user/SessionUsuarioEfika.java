@@ -1,15 +1,18 @@
 package vraptor_suporten2.controller.user;
 
 import java.io.Serializable;
-import javax.faces.bean.SessionScoped;
+
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Named;
 
 import webservices.Usuario;
 
 @SessionScoped
+@Named
 public class SessionUsuarioEfika implements Serializable {
 
-	private static final long serialVersionUID = -2203745431602457513L;
-
+	private static final long serialVersionUID = 1L;
+	
 	private Usuario usuario;
 	
 	public SessionUsuarioEfika() {
