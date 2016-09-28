@@ -18,11 +18,22 @@ import vraptor_suporten2.model.annotation.Admin;
 @Named
 public class AdminInterceper {
 
-	@Inject
 	private Result result;
 
-	@Inject
 	private SessionUsuarioEfika session;
+	
+
+    /**
+     * @deprecated CDI eyes only
+     */
+    protected AdminInterceper() {
+    	
+    }
+    
+    @Inject
+    public AdminInterceper(SessionUsuarioEfika session){
+    	this.session = session;
+    }
 
 	@BeforeCall
 	public void before() {

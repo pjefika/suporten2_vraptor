@@ -10,11 +10,11 @@ import webservices.Usuario;
 @SessionScoped
 @Named
 public class SessionUsuarioEfika implements Serializable {
-
-	private static final long serialVersionUID = 1L;
+	
+	private static final long serialVersionUID = -253139602953530465L;
 	
 	private Usuario usuario;
-	
+			
 	public SessionUsuarioEfika() {
 
 	}
@@ -22,7 +22,7 @@ public class SessionUsuarioEfika implements Serializable {
 	public SessionUsuarioEfika(Usuario usuario) {
 		this.usuario = usuario;
 	}
-
+	
 	public Usuario getUsuario() {
 		return usuario;
 	}
