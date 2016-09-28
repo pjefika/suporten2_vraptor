@@ -1,4 +1,4 @@
-package vraptor_suporten2.controller.user;
+package vraptor_suporten2.controller.intercepter;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -9,14 +9,15 @@ import br.com.caelum.vraptor.Intercepts;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.interceptor.AcceptsWithAnnotations;
 import vraptor_suporten2.controller.UsuarioController;
-import vraptor_suporten2.model.annotation.Admin;
+import vraptor_suporten2.controller.user.SessionUsuarioEfika;
+import vraptor_suporten2.model.annotation.Logado;
 
 
 @Intercepts
 @RequestScoped
-@AcceptsWithAnnotations(Admin.class)
+@AcceptsWithAnnotations(Logado.class)
 @Named
-public class AdminInterceper {
+public class LogadoInterceper {
 
 	private Result result;
 
@@ -26,23 +27,20 @@ public class AdminInterceper {
     /**
      * @deprecated CDI eyes only
      */
-    protected AdminInterceper() {
+    protected LogadoInterceper() {
     	
     }
     
     @Inject
-    public AdminInterceper(SessionUsuarioEfika session){
+    public LogadoInterceper(SessionUsuarioEfika session){
     	this.session = session;
     }
 
 	@BeforeCall
 	public void before() {
 		
-		try {
-			
-			System.out.println(session.getUsuario().getLogin());
-			
-			if(session == null || !session.isAdmin()){
+		try {			
+			if(session == null){
 				result.redirectTo(UsuarioController.class).restrito();
 			}
 		} catch (Exception e) {
