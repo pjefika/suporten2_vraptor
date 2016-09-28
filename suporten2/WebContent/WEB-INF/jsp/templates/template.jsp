@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8" ?>
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator"
 	prefix="decorator"%>
 <!DOCTYPE html>
@@ -39,7 +38,7 @@
 					<li><a href="#">Home</a></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false">AdministrataÃ§Ã£o <span class="caret"></span></a>
+						aria-expanded="false">Administratação <span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a href="${linkTo[UsuarioController].create}">Login</a></li>
 							<li><a href="#">Another action</a></li>
