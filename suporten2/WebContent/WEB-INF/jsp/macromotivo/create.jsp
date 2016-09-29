@@ -4,8 +4,8 @@
 	prefix="decorator"%>
 
 <c:if test="${not empty mensagemFalha}">
-	<span class="alert alert-danger" role="alert">
-	<span class="glyphicon glyphicon glyphicon-remove" aria-hidden="true"></span> 
+	<span class="alert alert-danger" role="alert"> <span
+		class="glyphicon glyphicon glyphicon-remove" aria-hidden="true"></span>
 		${mensagemFalha}
 	</span>
 </c:if>
@@ -13,30 +13,33 @@
 <div class="page-header">
 	<h2>Cadastro de Macro Motivo</h2>
 </div>
-<div class="form-inline">
-	<form action="${linkTo[MacroMotivoController].add}" method="post">
-		
-		<label for="nome">Nome: </label> 
-		<input type="text" class="form-control" id="nome"
-			placeholder="Nome" name="m.nome"> 
+<form action="${linkTo[MacroMotivoController].add}" method="post">
+
+	<div class="form-group">
+		<label for="nome">Nome: </label> <input type="text"
+			class="form-control" id="nome" placeholder="Nome" name="m.nome">
 		<c:if test="${not empty errors.from('m.nome')}">
-			<span class="alert alert-warning" role="alert">
-			<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"> </span> 
-			${errors.from('m.nome')}</span>
+			<span class="alert alert-warning" role="alert"> <span
+				class="glyphicon glyphicon-exclamation-sign" aria-hidden="true">
+			</span> ${errors.from('m.nome')}
+			</span>
 		</c:if>
-		
-		<label for="rede">Rede:</label>
-		<select class="form-control">
+	</div>
+
+	<div class="form-group">
+		<label for="rede">Rede:</label> <select class="form-control">
 			<option value="" selected="selected" disabled="disabled">Selecione</option>
 			<c:forEach items="${redeList}" var="rede">
 				<option value="${rede.id}">${rede.nome}</option>
 			</c:forEach>
 		</select>
 		<c:if test="${not empty errors.from('m.nome')}">
-			<span class="alert alert-warning" role="alert">
-			<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"> </span> 
-			${errors.from('m.nome')}</span>
+			<span class="alert alert-warning" role="alert"> <span
+				class="glyphicon glyphicon-exclamation-sign" aria-hidden="true">
+			</span> ${errors.from('m.nome')}
+			</span>
 		</c:if>
-		<button type="submit" class="btn btn-default">Registrar</button>
-	</form>
-</div>
+	</div>
+
+	<button type="submit" class="btn btn-default">Registrar</button>
+</form>

@@ -13,7 +13,6 @@ import br.com.caelum.vraptor.view.Results;
 import vraptor_suporten2.dal.MacroMotivoDAO;
 import vraptor_suporten2.dal.RedeDAO;
 import vraptor_suporten2.model.MacroMotivo;
-import vraptor_suporten2.model.Rede;
 import vraptor_suporten2.model.annotation.Admin;
 
 @Controller
