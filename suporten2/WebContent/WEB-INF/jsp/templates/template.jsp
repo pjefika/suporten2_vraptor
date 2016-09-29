@@ -1,5 +1,7 @@
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator"
 	prefix="decorator"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -13,7 +15,7 @@
 	rel="stylesheet" />
 
 <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	src="${pageContext.request.contextPath}/resources/jquery-3.1.1/jquery-3.1.1.min.js"></script>
 <script
 	src="${pageContext.request.contextPath}/resources/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 
@@ -40,14 +42,22 @@
 						data-toggle="dropdown" role="button" aria-haspopup="true"
 						aria-expanded="false">Administração <span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="${linkTo[UsuarioController].create}">Login</a></li>
-							<li><a href="#">Another action</a></li>
-							<li><a href="#">Something else here</a></li>
 							<li role="separator" class="divider"></li>
 							<li class="dropdown-header">Cadastros</li>
 							<li><a href="${linkTo[RedeController].list}">Rede</a></li>
 							<li><a href="${linkTo[MacroMotivoController].list}">Macro Motivo</a></li>
 						</ul></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+				
+					<c:choose>
+					    <c:when test="${empty sessionUsuarioEfika.usuario.login}">
+					        <li><a href="${linkTo[UsuarioController].create}">Login</a></li>
+					    </c:when>    
+					    <c:otherwise>
+					        <li><a href="#">${sessionUsuarioEfika.usuario.login}</a></li>
+					    </c:otherwise>
+					</c:choose>
 				</ul>
 			</div>
 		</div>

@@ -55,7 +55,6 @@ public class RedeController {
 	}
 	
 	@Admin
-	@Path("/rede/delete/{id}")
 	public Rede delete(Integer id) {		
 		
 		Rede r = new Rede();
@@ -63,7 +62,16 @@ public class RedeController {
 		
 		Rede rede = dao.buscarPorId(r);
 		
-		if(rede == null){
+		if(rede != null){
+			
+			try {
+				dao.excluir(rede);
+				result.use(Results.logic()).redirectTo(RedeController.class).list();
+			} catch (Exception e) {
+				result.include("mensagemFalha", e.getMessage());
+			}
+			
+		}else{
 			result.include("mensagemFalha", r.getClass().getSimpleName() + " inexistente!");
 		}
 		
@@ -104,14 +112,13 @@ public class RedeController {
 
 		try {
 
-			if(dao.buscarPorId(r) != null){
-				
+			if(dao.buscarPorId(r) != null && dao.buscarPorNome(r) == null){
 				dao.editar(r);
 				result.include("mensagem", r.getClass().getSimpleName() + " alterada com sucesso!");
 				result.use(Results.logic()).redirectTo(RedeController.class).list();
 				
 			}else{
-				result.include("mensagemFalha", r.getClass().getSimpleName() + " tá de brincation with mi cara!");
+				result.include("mensagemFalha", "Falha ao alterar " + r.getClass().getSimpleName() + ".");
 				result.use(Results.logic()).redirectTo(RedeController.class).edit(r.getId());
 			}
 				

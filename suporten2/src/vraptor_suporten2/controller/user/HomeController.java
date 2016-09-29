@@ -30,4 +30,8 @@ public class HomeController {
 
 	}
 	
+	public void index(){
+		
+	}
+	
 }

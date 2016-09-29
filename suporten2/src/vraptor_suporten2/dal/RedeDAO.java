@@ -54,6 +54,16 @@ public class RedeDAO {
 		}
 	}
 	
+	public void excluir(Rede r) throws Exception {
+
+		try {
+			this.entityManager.remove(this.entityManager.merge(r));
+		} catch (Exception e) {
+			throw new Exception("Erro ao excluir " + r.getClass().getSimpleName() + "!");
+		}
+
+	}
+	
 	
 	public void cadastrar(Rede rede) {
 		this.entityManager.persist(rede);

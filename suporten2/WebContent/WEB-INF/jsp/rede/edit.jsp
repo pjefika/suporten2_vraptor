@@ -16,7 +16,7 @@
 <div class="form-inline">
 	<form action="${linkTo[RedeController].update}" method="post">
 	
-	    <input type="text" name="r.id" value="${rede.id}" /> 
+	    <input type="hidden" name="r.id" value="${rede.id}" /> 
 		<label for="nome">Nome: </label> 
 		<input type="text" class="form-control" id="nome"
 			placeholder="Nome" name="r.nome" value="${rede.nome}"> 

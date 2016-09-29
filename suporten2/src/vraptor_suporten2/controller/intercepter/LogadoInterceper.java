@@ -19,10 +19,11 @@ import vraptor_suporten2.model.annotation.Logado;
 @Named
 public class LogadoInterceper {
 
+	@Inject
 	private Result result;
 
+	@Inject
 	private SessionUsuarioEfika session;
-	
 
     /**
      * @deprecated CDI eyes only

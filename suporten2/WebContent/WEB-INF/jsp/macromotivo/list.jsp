@@ -6,9 +6,7 @@
 		${mensagem}
 	</span>
 </c:if>
-<div class="page-header">
-	<h2>Listar Macro Motivos</h2>
-</div>
+<h2>Listar Macro Motivos</h2>
 <br>
 <a href="${linkTo[MacroMotivoController].create}">Adicionar</a>
 <table class="table table-bordered">
