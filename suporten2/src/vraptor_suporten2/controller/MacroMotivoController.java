@@ -7,12 +7,14 @@ import javax.inject.Inject;
 import javax.validation.Valid;
 
 import br.com.caelum.vraptor.Controller;
+import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.validator.Validator;
 import br.com.caelum.vraptor.view.Results;
 import vraptor_suporten2.dal.MacroMotivoDAO;
 import vraptor_suporten2.dal.RedeDAO;
 import vraptor_suporten2.model.MacroMotivo;
+import vraptor_suporten2.model.Rede;
 import vraptor_suporten2.model.annotation.Admin;
 
 @Controller
@@ -44,6 +46,46 @@ public class MacroMotivoController {
 	public List<MacroMotivo> list() {
 		return dao.listar();
 	}
+	
+	@Admin
+	@Path("/macromotivo/edit/{id}")
+	public MacroMotivo edit(Integer id) {		
+		
+		MacroMotivo m = new MacroMotivo();
+		m.setId(id);
+		
+		MacroMotivo macro = dao.buscarPorId(m);
+		
+		if(macro == null){
+			result.include("mensagemFalha", m.getClass().getSimpleName() + " inexistente!");
+		}
+		
+		return macro;
+	}
+	
+//	@Admin
+//	public Rede delete(Integer id) {		
+//		
+//		MacroMotivo m = new MacroMotivo();
+//		m.setId(id);
+//		
+//		MacroMotivo macro = dao.buscarPorId(m);
+//		
+//		if(macro != null){
+//			
+//			try {
+//				dao.excluir(macro);
+//				result.use(Results.logic()).redirectTo(RedeController.class).list();
+//			} catch (Exception e) {
+//				result.include("mensagemFalha", e.getMessage());
+//			}
+//			
+//		}else{
+//			result.include("mensagemFalha", r.getClass().getSimpleName() + " inexistente!");
+//		}
+//		
+//		return rede;
+//	}	
 
 	@Admin
 	public void add(@Valid MacroMotivo m) {

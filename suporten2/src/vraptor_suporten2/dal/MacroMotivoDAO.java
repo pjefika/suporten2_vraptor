@@ -2,19 +2,13 @@ package vraptor_suporten2.dal;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import vraptor_suporten2.model.MacroMotivo;
 
 @Stateless
-public class MacroMotivoDAO {
-
-	@PersistenceContext
-	private EntityManager entityManager;
+public class MacroMotivoDAO extends AbstractDAO{
 
 	public MacroMotivoDAO() {
 
@@ -32,8 +26,19 @@ public class MacroMotivoDAO {
 
 	}
 	
-	public MacroMotivo buscarPorNome(MacroMotivo m){
+	public MacroMotivo buscarPorId(MacroMotivo m){
 		
+		try {
+			Query query = this.entityManager.createQuery("FROM MacroMotivo m WHERE m.id =:param1");
+			query.setParameter("param1", m.getId());
+			return (MacroMotivo) query.getSingleResult();
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	
+	public MacroMotivo buscarPorNome(MacroMotivo m){
+				
 		try {
 			Query query = this.entityManager.createQuery("FROM MacroMotivo m WHERE m.nome =:param1");
 			query.setParameter("param1", m.getNome());
@@ -42,9 +47,4 @@ public class MacroMotivoDAO {
 			return null;
 		}
 	}
-
-	public void cadastrar(MacroMotivo m) {
-		this.entityManager.persist(m);
-	}
-
 }

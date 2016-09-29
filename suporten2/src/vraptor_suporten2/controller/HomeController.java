@@ -1,4 +1,4 @@
-package vraptor_suporten2.controller.user;
+package vraptor_suporten2.controller;
 
 import java.util.List;
 

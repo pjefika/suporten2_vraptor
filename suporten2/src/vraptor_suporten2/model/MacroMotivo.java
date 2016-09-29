@@ -25,6 +25,10 @@ public class MacroMotivo {
 	@ManyToOne
 	@NotNull
 	private Rede rede;
+	
+	public MacroMotivo() {
+		rede = new Rede();
+	}
 
 	public Integer getId() {
 		return id;

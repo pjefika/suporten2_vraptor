@@ -66,9 +66,11 @@ public class RedeController {
 			
 			try {
 				dao.excluir(rede);
-				result.use(Results.logic()).redirectTo(RedeController.class).list();
+				result.include("mensagem", r.getClass().getSimpleName() + " " + rede.getNome() + " excluída.");
 			} catch (Exception e) {
 				result.include("mensagemFalha", e.getMessage());
+			}finally {
+				result.use(Results.logic()).redirectTo(RedeController.class).list();
 			}
 			
 		}else{

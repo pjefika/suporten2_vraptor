@@ -4,17 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-
 import vraptor_suporten2.model.Rede;
 
 @Stateless
-public class RedeDAO {
-
-	@PersistenceContext
-	private EntityManager entityManager;
+public class RedeDAO extends AbstractDAO{
 
 	public RedeDAO() {
 
@@ -54,23 +48,4 @@ public class RedeDAO {
 		}
 	}
 	
-	public void excluir(Rede r) throws Exception {
-
-		try {
-			this.entityManager.remove(this.entityManager.merge(r));
-		} catch (Exception e) {
-			throw new Exception("Erro ao excluir " + r.getClass().getSimpleName() + "!");
-		}
-
-	}
-	
-	
-	public void cadastrar(Rede rede) {
-		this.entityManager.persist(rede);
-	}
-	
-	public void editar(Rede rede){
-		this.entityManager.merge(rede);
-	}
-
 }

@@ -13,21 +13,24 @@
 <div class="page-header">
 	<h2>Cadastro de Macro Motivo</h2>
 </div>
-<form action="${linkTo[MacroMotivoController].add}" method="post">
+<form action="${linkTo[MacroMotivoController].add}" method="post" style="width: 50;">
 
 	<div class="form-group">
 		<label for="nome">Nome: </label> <input type="text"
 			class="form-control" id="nome" placeholder="Nome" name="m.nome">
 		<c:if test="${not empty errors.from('m.nome')}">
-			<span class="alert alert-warning" role="alert"> <span
-				class="glyphicon glyphicon-exclamation-sign" aria-hidden="true">
-			</span> ${errors.from('m.nome')}
+			<span class="alert alert-warning" role="alert"> 
+			<span
+				class="glyphicon glyphicon-exclamation-sign" 
+				aria-hidden="true"></span> 
+				${errors.from('m.nome')}
 			</span>
 		</c:if>
 	</div>
 
 	<div class="form-group">
-		<label for="rede">Rede:</label> <select class="form-control">
+		<label for="rede">Rede:</label> 
+		<select class="form-control" name="m.rede.id">
 			<option value="" selected="selected" disabled="disabled">Selecione</option>
 			<c:forEach items="${redeList}" var="rede">
 				<option value="${rede.id}">${rede.nome}</option>
@@ -36,7 +39,7 @@
 		<c:if test="${not empty errors.from('m.nome')}">
 			<span class="alert alert-warning" role="alert"> <span
 				class="glyphicon glyphicon-exclamation-sign" aria-hidden="true">
-			</span> ${errors.from('m.nome')}
+			</span> ${errors.from('m.rede.id')}
 			</span>
 		</c:if>
 	</div>
