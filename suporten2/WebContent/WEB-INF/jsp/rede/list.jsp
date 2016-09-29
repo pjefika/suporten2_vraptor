@@ -12,6 +12,7 @@
 	<h2>Listar Redes</h2>
 </div>
 <br>
+<a href="${linkTo[RedeController].create}">Adicionar</a>
 <table class="table table-bordered">
 	<thead>
 		<tr>

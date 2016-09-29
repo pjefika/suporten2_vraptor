@@ -1,6 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <c:if test="${not empty mensagem}">
 	<span class="alert alert-success" role="alert">
 	<span class="glyphicon glyphicon glyphicon-ok" aria-hidden="true"></span> 
@@ -8,8 +7,9 @@
 	</span>
 </c:if>
 <br>
+<a href="${linkTo[MacroMotivoController].create}">Adicionar</a>
 <div class="page-header">
-	<h2>Listar Redes</h2>
+	<h2>Listar Macro Motivos</h2>
 </div>
 <br>
 <table class="table table-bordered">

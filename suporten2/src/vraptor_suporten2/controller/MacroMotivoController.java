@@ -11,7 +11,9 @@ import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.validator.Validator;
 import br.com.caelum.vraptor.view.Results;
 import vraptor_suporten2.dal.MacroMotivoDAO;
+import vraptor_suporten2.dal.RedeDAO;
 import vraptor_suporten2.model.MacroMotivo;
+import vraptor_suporten2.model.Rede;
 import vraptor_suporten2.model.annotation.Admin;
 
 @Controller
@@ -26,6 +28,9 @@ public class MacroMotivoController {
 
 	@Inject
 	private MacroMotivoDAO dao;
+	
+	@Inject
+	private RedeDAO redeDao;
 
 	public MacroMotivoController() {
 
@@ -33,7 +38,7 @@ public class MacroMotivoController {
 
 	@Admin
 	public void create() {
-
+		result.include("redeList", redeDao.listar());
 	}
 
 	@Admin

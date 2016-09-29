@@ -45,8 +45,8 @@
 							<li><a href="#">Something else here</a></li>
 							<li role="separator" class="divider"></li>
 							<li class="dropdown-header">Cadastros</li>
-							<li><a href="${linkTo[RedeController].create}">Rede</a></li>
-							<li><a href="${linkTo[RedeController].create}">One more separated link</a></li>
+							<li><a href="${linkTo[RedeController].list}">Rede</a></li>
+							<li><a href="${linkTo[MacroMotivoController].list}">Macro Motivo</a></li>
 						</ul></li>
 				</ul>
 			</div>
