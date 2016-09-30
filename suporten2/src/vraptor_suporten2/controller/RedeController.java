@@ -81,7 +81,6 @@ public class RedeController {
 	}	
 	
 
-	@Get
 	@Path("/rede")
 	@Admin
 	public List<Rede> list() {
@@ -121,10 +120,12 @@ public class RedeController {
 	public void update(@Valid Rede r) {
 
 		validation.onErrorForwardTo(this).edit(r.getId());
+		
+		Rede rd = dao.buscarPorId(r);
 
 		try {
 
-			if(dao.buscarPorId(r) != null && dao.buscarPorNome(r).getId() == r.getId()){
+			if(rd != null && rd.getId() == r.getId()){
 				
 				dao.editar(r);
 				result.include("mensagem", r.getClass().getSimpleName() + " alterada com sucesso!");
@@ -133,12 +134,13 @@ public class RedeController {
 			}else{
 				
 				result.include("mensagemFalha", "Falha ao alterar " + r.getClass().getSimpleName() + ".");
-				result.use(Results.logic()).redirectTo(this.getClass()).edit(r.getId());
+				result.use(Results.logic()).forwardTo(this.getClass()).edit(r.getId());
 				
 			}
 				
 		} catch (Exception e) {
 			result.include("mensagemFalha", "Falha ao alterar " + r.getClass().getSimpleName() + ".");
+			result.use(Results.logic()).forwardTo(this.getClass()).edit(r.getId());
 		}
 	}	
 	

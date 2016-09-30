@@ -2,7 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator"
 	prefix="decorator"%>
-	
-<div>${usuario}</div>
 
-
+<div class="page-header">
+	<h2>Acesso Restrito</h2>
+</div>
+<p>Acesso Restrito aos Administradores</p>

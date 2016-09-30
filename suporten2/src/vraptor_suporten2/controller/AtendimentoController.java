@@ -13,6 +13,7 @@ import br.com.caelum.vraptor.view.Results;
 import vraptor_suporten2.dal.AtendimentoDAO;
 import vraptor_suporten2.model.Atendimento;
 import vraptor_suporten2.model.annotation.Admin;
+import vraptor_suporten2.model.annotation.Logado;
 
 @Controller
 @RequestScoped
@@ -31,14 +32,15 @@ public class AtendimentoController {
 
 	}
 
-	@Admin
-	public void create() {
-
-	}
 
 	@Admin
 	public List<Atendimento> list() {
 		return dao.listar();
+	}
+	
+	@Logado
+	public void create() {
+
 	}
 
 	@Admin

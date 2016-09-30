@@ -7,7 +7,7 @@
 	<h2>Editar de Rede</h2>
 </div>
 <div class="form-inline">
-	<form action="${linkTo[RedeController].update}" method="post">
+	<form action="${linkTo[RedeController].update}" method="post" style="width: 50%;">
 	
 	    <input type="hidden" name="r.id" value="${rede.id}" /> 
 		<label for="nome">Nome: </label> 

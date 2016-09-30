@@ -7,8 +7,7 @@
 	<h2>Cadastro de Rede</h2>
 </div>
 <div class="form-inline">
-	<form action="${linkTo[RedeController].add}" method="post"
-		style="width: 50%;">
+	<form action="${linkTo[RedeController].add}" method="post" style="width: 50%;">
 		<label for="nome">Nome: </label> <input type="text"
 			class="form-control" id="nome" placeholder="Nome" name="r.nome">
 		<c:if test="${not empty errors.from('r.nome')}">

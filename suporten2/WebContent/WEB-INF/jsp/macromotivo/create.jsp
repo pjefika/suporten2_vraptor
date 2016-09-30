@@ -6,36 +6,54 @@
 <div class="page-header">
 	<h2>Cadastro de Macro Motivo</h2>
 </div>
-<form action="${linkTo[MacroMotivoController].add}" method="post" style="width: 50;">
+<form action="${linkTo[MacroMotivoController].add}" method="post" style="width: 75%;">
 
 	<div class="form-group">
-		<label for="nome">Nome: </label> <input type="text"
-			class="form-control" id="nome" placeholder="Nome" name="m.nome">
-		<c:if test="${not empty errors.from('m.nome')}">
-			<span class="alert alert-warning" role="alert"> 
-			<span
-				class="glyphicon glyphicon-exclamation-sign" 
-				aria-hidden="true"></span> 
-				${errors.from('m.nome')}
-			</span>
-		</c:if>
+		<div class="form-inline">
+			<label for="nome">Nome: </label> 
+			<input type="text"
+				class="form-control" 
+				id="nome" 
+				placeholder="Nome"
+				name="m.nome">
+			<c:if test="${not empty errors.from('m.nome')}">
+				<small>
+					<span class="alert alert-warning" style="padding: 10px;">
+						<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> 
+						${errors.from('m.nome')}
+					</span>
+				</small>			
+			</c:if>
+		</div>
 	</div>
 
 	<div class="form-group">
-		<label for="rede">Rede:</label> 
-		<select class="form-control" name="m.rede.id">
-			<option value="" selected="selected" disabled="disabled">Selecione</option>
-			<c:forEach items="${redeList}" var="rede">
-				<option value="${rede.id}">${rede.nome}</option>
-			</c:forEach>
-		</select>
-		<c:if test="${not empty errors.from('m.nome')}">
-			<span class="alert alert-warning" role="alert"> <span
-				class="glyphicon glyphicon-exclamation-sign" aria-hidden="true">
-			</span> ${errors.from('m.rede.id')}
-			</span>
-		</c:if>
+		<div class="form-inline">
+			<label for="rede">Rede:</label> 
+			<select class="form-control" name="m.rede.id">
+				<option selected="selected" disabled="disabled">Selecione</option>
+				<c:forEach items="${redeList}" var="rede">
+					<option value="${rede.id}">${rede.nome}</option>
+				</c:forEach>
+			</select>
+			<c:if test="${not empty errors.from('m.rede.id')}">
+				<small>
+					<span class="alert alert-warning" style="padding: 10px;">
+						<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> 
+						${errors.from('m.rede.id')}
+					</span>
+				</small>
+			</c:if>
+		</div>
 	</div>
+	
+	<div class="form-group">
+		<div class="checkbox">
+			<label> 
+				<input type="checkbox" name="m.ativo"> Ativa
+			</label>
+		</div>
+	</div>	
 
 	<button type="submit" class="btn btn-default">Registrar</button>
 </form>

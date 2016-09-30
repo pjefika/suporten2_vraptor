@@ -9,12 +9,12 @@ import javax.validation.Valid;
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Result;
+import br.com.caelum.vraptor.validator.SimpleMessage;
 import br.com.caelum.vraptor.validator.Validator;
 import br.com.caelum.vraptor.view.Results;
 import vraptor_suporten2.dal.MacroMotivoDAO;
 import vraptor_suporten2.dal.RedeDAO;
 import vraptor_suporten2.model.MacroMotivo;
-import vraptor_suporten2.model.Rede;
 import vraptor_suporten2.model.annotation.Admin;
 
 @Controller
@@ -42,6 +42,7 @@ public class MacroMotivoController {
 		result.include("redeList", redeDao.listar());
 	}
 
+	@Path("/macroMotivo")
 	@Admin
 	public List<MacroMotivo> list() {
 		return dao.listar();
@@ -90,15 +91,25 @@ public class MacroMotivoController {
 
 	@Admin
 	public void add(@Valid MacroMotivo m) {
-
+		
+		if(m.getRede().getId() == null){
+			validation.add(new SimpleMessage("m.rede.id", "Campo requerido!"));
+		}
+		
 		validation.onErrorForwardTo(this).create();
 
 		try {
 
 			if(dao.buscarPorNome(m) == null){
+				
+				if(m.getAtivo() == null){
+					m.setAtivo(false);
+				}
+				
 				dao.cadastrar(m);
 				result.include("mensagem", m.getClass().getSimpleName() + " adicionado com sucesso!");
 				result.use(Results.logic()).redirectTo(this.getClass()).list();
+				
 			}else{
 				result.include("mensagemFalha", m.getClass().getSimpleName() + ": " + m.getNome() + " já existente!");
 				result.forwardTo(this).create();
@@ -112,25 +123,27 @@ public class MacroMotivoController {
 	public void update(@Valid MacroMotivo m) {
 
 		validation.onErrorForwardTo(this).edit(m.getId());
+		
+		MacroMotivo md = dao.buscarPorId(m);
 
 		try {
 
-			if(dao.buscarPorId(m) != null && dao.buscarPorNome(m).getId() == m.getId()){
+			if(md != null && md.getId() == m.getId()){
 				
 				dao.editar(m);
-				result.include("mensagem", m.getClass().getSimpleName() + " alterada com sucesso!");
+				result.include("mensagem", "Alterações realizadas com sucesso!");
 				result.use(Results.logic()).redirectTo(this.getClass()).list();
 				
 			}else{
 				
 				result.include("mensagemFalha", "Falha ao alterar " + m.getClass().getSimpleName() + ".");
-				result.use(Results.logic()).redirectTo(this.getClass()).edit(m.getId());
+				result.use(Results.logic()).forwardTo(this.getClass()).edit(m.getId());
 				
 			}
 				
 		} catch (Exception e) {
 			result.include("mensagemFalha", "Falha ao alterar " + m.getClass().getSimpleName() + ".");
-			result.use(Results.logic()).redirectTo(this.getClass()).edit(m.getId());
+			result.use(Results.logic()).forwardTo(this.getClass()).edit(m.getId());
 		}
 	}	
 	

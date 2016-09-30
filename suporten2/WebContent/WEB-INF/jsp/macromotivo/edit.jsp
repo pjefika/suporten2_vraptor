@@ -7,8 +7,7 @@
 	<h2>Editar de Macro Motivo</h2>
 </div>
 
-<form action="${linkTo[MacroMotivoController].update}" method="post">
-
+<form action="${linkTo[MacroMotivoController].update}" method="post"  style="width: 50%;">
 	<input type="hidden" name="m.id" value="${macroMotivo.id}" /> 
 	
 	<div class="form-group">

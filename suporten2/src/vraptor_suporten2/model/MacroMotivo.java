@@ -28,7 +28,7 @@ public class MacroMotivo {
 	private Boolean ativo = false;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
-	@NotNull
+	@NotNull(message="Campo requerido!")
 	private Rede rede;
 	
 	@OneToMany(fetch = FetchType.EAGER, mappedBy="macroMotivo", cascade=CascadeType.REFRESH)

@@ -5,6 +5,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
 import br.com.caelum.vraptor.Controller;
+import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Result;
 import vraptor_suporten2.controller.user.SessionUsuarioEfika;
 import webservices.EfikaUsersProxy;
@@ -29,10 +30,6 @@ public class UsuarioController {
 	public void create(){
 	}
 	
-	public void detail(){
-		//result.include("usuario", session.getUsuario());
-	}
-	
 	public void login(Usuario u){
 		
 		try {
@@ -43,9 +40,7 @@ public class UsuarioController {
 				
 				u = ws.consultarUsuario(u.getLogin());
 				session.setUsuario(u);
-				
-				result.include("mensagemFalha", "Login!" + session.getUsuario().getLogin() + " " + session.getUsuario().getNivel());
-				result.forwardTo(this).create();
+				result.redirectTo(HomeController.class).index();
 				
 			}else{
 				
@@ -64,5 +59,9 @@ public class UsuarioController {
 		result.include("mensagem", "Acesso restrito!");
 	}
 	
+	public void logout(){
+		session.setUsuario(null);
+		result.forwardTo(UsuarioController.class).create();
+	}
 	
 }
