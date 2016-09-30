@@ -7,8 +7,10 @@
 
 package vraptor_suporten2.dal.webservice;
 
+@SuppressWarnings("rawtypes")
 public class EfikaUsersSoapBindingStub extends org.apache.axis.client.Stub implements vraptor_suporten2.dal.webservice.EfikaUsers_PortType {
-    private java.util.Vector cachedSerClasses = new java.util.Vector();
+    
+	private java.util.Vector cachedSerClasses = new java.util.Vector();
     private java.util.Vector cachedSerQNames = new java.util.Vector();
     private java.util.Vector cachedSerFactories = new java.util.Vector();
     private java.util.Vector cachedDeserFactories = new java.util.Vector();
@@ -61,7 +63,8 @@ public class EfikaUsersSoapBindingStub extends org.apache.axis.client.Stub imple
          super.cachedEndpoint = endpointURL;
     }
 
-    public EfikaUsersSoapBindingStub(javax.xml.rpc.Service service) throws org.apache.axis.AxisFault {
+    @SuppressWarnings("unchecked")
+	public EfikaUsersSoapBindingStub(javax.xml.rpc.Service service) throws org.apache.axis.AxisFault {
         if (service == null) {
             super.service = new org.apache.axis.client.Service();
         } else {

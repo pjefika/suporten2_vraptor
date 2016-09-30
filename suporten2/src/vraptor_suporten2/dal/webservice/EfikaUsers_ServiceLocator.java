@@ -7,6 +7,7 @@
 
 package vraptor_suporten2.dal.webservice;
 
+@SuppressWarnings("serial")
 public class EfikaUsers_ServiceLocator extends org.apache.axis.client.Service implements vraptor_suporten2.dal.webservice.EfikaUsers_Service {
 
     public EfikaUsers_ServiceLocator() {
@@ -70,7 +71,7 @@ public class EfikaUsers_ServiceLocator extends org.apache.axis.client.Service im
      * If this service has no port for the given interface,
      * then ServiceException is thrown.
      */
-    public java.rmi.Remote getPort(Class serviceEndpointInterface) throws javax.xml.rpc.ServiceException {
+    public java.rmi.Remote getPort(@SuppressWarnings("rawtypes") Class serviceEndpointInterface) throws javax.xml.rpc.ServiceException {
         try {
             if (vraptor_suporten2.dal.webservice.EfikaUsers_PortType.class.isAssignableFrom(serviceEndpointInterface)) {
                 vraptor_suporten2.dal.webservice.EfikaUsersSoapBindingStub _stub = new vraptor_suporten2.dal.webservice.EfikaUsersSoapBindingStub(new java.net.URL(_8_address), this);
@@ -89,7 +90,8 @@ public class EfikaUsers_ServiceLocator extends org.apache.axis.client.Service im
      * If this service has no port for the given interface,
      * then ServiceException is thrown.
      */
-    public java.rmi.Remote getPort(javax.xml.namespace.QName portName, Class serviceEndpointInterface) throws javax.xml.rpc.ServiceException {
+    @SuppressWarnings("rawtypes")
+	public java.rmi.Remote getPort(javax.xml.namespace.QName portName, Class serviceEndpointInterface) throws javax.xml.rpc.ServiceException {
         if (portName == null) {
             return getPort(serviceEndpointInterface);
         }
@@ -108,9 +110,11 @@ public class EfikaUsers_ServiceLocator extends org.apache.axis.client.Service im
         return new javax.xml.namespace.QName("http://webservices/", "EfikaUsers");
     }
 
-    private java.util.HashSet ports = null;
+    @SuppressWarnings("rawtypes")
+	private java.util.HashSet ports = null;
 
-    public java.util.Iterator getPorts() {
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+	public java.util.Iterator getPorts() {
         if (ports == null) {
             ports = new java.util.HashSet();
             ports.add(new javax.xml.namespace.QName("http://webservices/", "80"));
