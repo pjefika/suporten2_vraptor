@@ -11,7 +11,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name="SuporteN2_Motivo")
-public class Motivo {
+public class Motivo implements EntityCrudInterface{
 	
 	@Id
 	@GeneratedValue

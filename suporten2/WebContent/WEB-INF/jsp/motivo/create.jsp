@@ -29,24 +29,6 @@
 
 	<div class="form-group">
 		<div class="form-inline">
-			<label for="rede">Rede:</label> 
-			<select class="form-control" name="m.rede.id">
-				<option selected="selected" disabled="disabled">Selecione</option>
-				<c:forEach items="${redeList}" var="rede">
-					<option value="${rede.id}">${rede.nome}</option>
-				</c:forEach>
-			</select>
-			<c:if test="${not empty errors.from('m.rede.id')}">
-				<span class="alert alert-warning validator">
-					<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> 
-					${errors.from('m.rede.id')}
-				</span>
-			</c:if>
-		</div>
-	</div>
-	
-	<div class="form-group">
-		<div class="form-inline">
 			<label for="macro">Macro Motivo:</label> 
 			<select class="form-control" name="m.macroMotivo.id">
 				<option selected="selected" disabled="disabled">Selecione</option>

@@ -2,19 +2,13 @@ package vraptor_suporten2.dal;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import vraptor_suporten2.model.entities.Motivo;
 
 @Stateless
-public class MotivoDAO {
-
-	@PersistenceContext
-	private EntityManager entityManager;
+public class MotivoDAO extends AbstractDAO{
 
 	public MotivoDAO() {
 
@@ -30,17 +24,6 @@ public class MotivoDAO {
 			return new ArrayList<Motivo>();
 		}
 
-	}
-	
-	public Motivo buscarPorNome(Motivo m){
-		
-		try {
-			Query query = this.entityManager.createQuery("FROM Motivo m WHERE m.nome =:param1");
-			query.setParameter("param1", m.getNome());
-			return (Motivo) query.getSingleResult();
-		} catch (Exception e) {
-			return null;
-		}
 	}
 
 	public void cadastrar(Motivo m) {
