@@ -18,7 +18,7 @@
 				name="m.nome">
 			<c:if test="${not empty errors.from('m.nome')}">
 				<small>
-					<span class="alert alert-warning" style="padding: 10px;">
+					<span class="alert alert-warning validator">
 						<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> 
 						${errors.from('m.nome')}
 					</span>
@@ -37,12 +37,10 @@
 				</c:forEach>
 			</select>
 			<c:if test="${not empty errors.from('m.rede.id')}">
-				<small>
-					<span class="alert alert-warning" style="padding: 10px;">
-						<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> 
-						${errors.from('m.rede.id')}
-					</span>
-				</small>
+				<span class="alert alert-warning validator">
+					<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> 
+					${errors.from('m.rede.id')}
+				</span>
 			</c:if>
 		</div>
 	</div>

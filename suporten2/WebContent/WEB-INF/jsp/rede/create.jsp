@@ -11,7 +11,7 @@
 		<label for="nome">Nome: </label> <input type="text"
 			class="form-control" id="nome" placeholder="Nome" name="r.nome">
 		<c:if test="${not empty errors.from('r.nome')}">
-			<span class="alert alert-warning" role="alert"> <span
+			<span class="alert alert-warning validator" role="alert"> <span
 				class="glyphicon glyphicon-exclamation-sign" aria-hidden="true">
 			</span> ${errors.from('r.nome')}
 			</span>
