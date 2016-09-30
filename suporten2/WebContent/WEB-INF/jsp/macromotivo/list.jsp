@@ -1,12 +1,14 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<script type="text/javascript" src="http://efika/novosite/customizacoes/js/ledataTable.min.js"></script>
+<link rel="stylesheet" href="http://efika/novosite/customizacoes/css/ledataTable.min.css">
 <div class="page-header">
 	<h2>Listar Macro Motivos</h2>
 </div>
 
-<a href="${linkTo[MacroMotivoController].create}">Adicionar</a>
-<table class="table table-bordered" style="font-size: 12px;">
+<a class="row" href="${linkTo[MacroMotivoController].create}">Adicionar</a>
+
+<table class="table table-bordered" id="listaMacro" style="font-size: 12px;">
 	<thead>
 		<tr>
 			<th>Nome</th>
@@ -50,7 +52,11 @@
 </table>
 
 <script>
-
+	setTimeout(function(){
+		$('#listaMacro').DataTable();
+	});
+	
+	
 	$('.deletar').click(function () {
 		
 		botao = $(this);
