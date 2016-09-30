@@ -1,9 +1,14 @@
 package vraptor_suporten2.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -22,9 +27,12 @@ public class MacroMotivo {
 	
 	private Boolean ativo = false;
 	
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.EAGER)
 	@NotNull
 	private Rede rede;
+	
+	@OneToMany(fetch = FetchType.EAGER, mappedBy="macroMotivo", cascade=CascadeType.REFRESH)
+	private List<Motivo> motivos;
 	
 	public MacroMotivo() {
 		rede = new Rede();
@@ -61,4 +69,13 @@ public class MacroMotivo {
 	public void setRede(Rede rede) {
 		this.rede = rede;
 	}
+
+	public List<Motivo> getMotivos() {
+		return motivos;
+	}
+
+	public void setMotivos(List<Motivo> motivos) {
+		this.motivos = motivos;
+	}
+
 }

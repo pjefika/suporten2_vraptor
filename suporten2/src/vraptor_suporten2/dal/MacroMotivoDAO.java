@@ -6,6 +6,7 @@ import javax.ejb.Stateless;
 import javax.persistence.Query;
 
 import vraptor_suporten2.model.MacroMotivo;
+import vraptor_suporten2.model.Rede;
 
 @Stateless
 public class MacroMotivoDAO extends AbstractDAO{
@@ -46,5 +47,18 @@ public class MacroMotivoDAO extends AbstractDAO{
 		} catch (Exception e) {
 			return null;
 		}
+	}
+	
+	public void excluir(MacroMotivo m) throws Exception{
+		
+		/**
+		 * Validação de Quebra de Constraint
+		 */
+		if(buscarPorId(m).getMotivos().size() == 0){
+			super.excluir(m);
+		}else{
+			throw new Exception("Falha ao excluir Macro Motivo, existem Motivos associados.");
+		}
+
 	}
 }

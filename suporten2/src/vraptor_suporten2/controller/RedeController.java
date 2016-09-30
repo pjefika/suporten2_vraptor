@@ -65,12 +65,12 @@ public class RedeController {
 		if(rede != null){
 			
 			try {
-				dao.excluir(rede);
+				dao.excluir(r);
 				result.include("mensagem", r.getClass().getSimpleName() + " " + rede.getNome() + " excluída.");
 			} catch (Exception e) {
 				result.include("mensagemFalha", e.getMessage());
 			}finally {
-				result.use(Results.logic()).redirectTo(RedeController.class).list();
+				result.use(Results.logic()).redirectTo(this.getClass()).list();
 			}
 			
 		}else{
@@ -83,6 +83,7 @@ public class RedeController {
 
 	@Get
 	@Path("/rede")
+	@Admin
 	public List<Rede> list() {
 		return dao.listar();
 	}
@@ -95,13 +96,22 @@ public class RedeController {
 		try {
 
 			if(dao.buscarPorNome(r) == null){
+				
+				if(r.getAtivo() == null){
+					r.setAtivo(false);
+				}
+				
 				dao.cadastrar(r);
 				result.include("mensagem", r.getClass().getSimpleName() + " adicionada com sucesso!");
-				result.use(Results.logic()).redirectTo(RedeController.class).list();
+				result.use(Results.logic()).redirectTo(this.getClass()).list();
+				
 			}else{
+				
 				result.include("mensagemFalha", r.getClass().getSimpleName() + ": " + r.getNome() + " já existente!");
 				result.forwardTo(this).create();
+				
 			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -114,18 +124,21 @@ public class RedeController {
 
 		try {
 
-			if(dao.buscarPorId(r) != null && dao.buscarPorNome(r) == null){
+			if(dao.buscarPorId(r) != null && dao.buscarPorNome(r).getId() == r.getId()){
+				
 				dao.editar(r);
 				result.include("mensagem", r.getClass().getSimpleName() + " alterada com sucesso!");
-				result.use(Results.logic()).redirectTo(RedeController.class).list();
+				result.use(Results.logic()).redirectTo(this.getClass()).list();
 				
 			}else{
+				
 				result.include("mensagemFalha", "Falha ao alterar " + r.getClass().getSimpleName() + ".");
-				result.use(Results.logic()).redirectTo(RedeController.class).edit(r.getId());
+				result.use(Results.logic()).redirectTo(this.getClass()).edit(r.getId());
+				
 			}
 				
 		} catch (Exception e) {
-			e.printStackTrace();
+			result.include("mensagemFalha", "Falha ao alterar " + r.getClass().getSimpleName() + ".");
 		}
 	}	
 	

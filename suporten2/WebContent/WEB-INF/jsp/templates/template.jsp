@@ -58,6 +58,7 @@
 					        <li><a href="#">${sessionUsuarioEfika.usuario.login}</a></li>
 					    </c:otherwise>
 					</c:choose>
+					
 				</ul>
 			</div>
 		</div>
@@ -68,6 +69,18 @@
 		<br/>
 		<br/>
 		<br/>
+		<c:if test="${not empty mensagem}">
+			<span class="alert alert-success" role="alert"> <span
+				class="glyphicon glyphicon glyphicon-ok" aria-hidden="true"></span>
+				${mensagem}
+			</span>
+		</c:if>
+		<c:if test="${not empty mensagemFalha}">
+			<span class="alert alert-danger" role="alert">
+			<span class="glyphicon glyphicon glyphicon-remove" aria-hidden="true"></span> 
+				${mensagemFalha}
+			</span>
+		</c:if>
 		<decorator:body />
 	</div>
 	<!-- /container -->

@@ -3,13 +3,6 @@
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator"
 	prefix="decorator"%>
 
-<c:if test="${not empty mensagemFalha}">
-	<span class="alert alert-danger" role="alert">
-	<span class="glyphicon glyphicon glyphicon-remove" aria-hidden="true"></span> 
-		${mensagemFalha}
-	</span>
-</c:if>
-<br>
 <div class="page-header">
 	<h2>Editar de Rede</h2>
 </div>
@@ -25,6 +18,15 @@
 			<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"> </span> 
 			${errors.from('rede.nome')}</span>
 		</c:if>
+		
+		<div class="form-group">
+			<div class="checkbox">
+				<label> 
+					<input type="checkbox" name="r.ativo" <c:if test="${rede.ativo}">checked="checked"</c:if>> Ativa
+				</label>
+			</div>
+		</div>
+
 		<button type="submit" class="btn btn-default">Alterar</button>
 	</form>
 </div>

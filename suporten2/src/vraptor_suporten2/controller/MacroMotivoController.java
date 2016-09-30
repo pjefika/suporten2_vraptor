@@ -56,36 +56,37 @@ public class MacroMotivoController {
 		
 		MacroMotivo macro = dao.buscarPorId(m);
 		
+		result.include("redeList", redeDao.listar());
+		
 		if(macro == null){
+			result.include("mensagemFalha", m.getClass().getSimpleName() + " inexistente!");
+		}
+	
+		return macro;
+	}
+	
+	@Admin
+	public MacroMotivo delete(Integer id) {		
+		
+		MacroMotivo m = new MacroMotivo();
+		m.setId(id);
+		MacroMotivo macro = dao.buscarPorId(m);
+		
+		if(macro != null){
+			
+			try {
+				dao.excluir(macro);
+				result.use(Results.logic()).redirectTo(this.getClass()).list();
+			} catch (Exception e) {
+				result.include("mensagemFalha", e.getMessage());
+			}
+			
+		}else{
 			result.include("mensagemFalha", m.getClass().getSimpleName() + " inexistente!");
 		}
 		
 		return macro;
-	}
-	
-//	@Admin
-//	public Rede delete(Integer id) {		
-//		
-//		MacroMotivo m = new MacroMotivo();
-//		m.setId(id);
-//		
-//		MacroMotivo macro = dao.buscarPorId(m);
-//		
-//		if(macro != null){
-//			
-//			try {
-//				dao.excluir(macro);
-//				result.use(Results.logic()).redirectTo(RedeController.class).list();
-//			} catch (Exception e) {
-//				result.include("mensagemFalha", e.getMessage());
-//			}
-//			
-//		}else{
-//			result.include("mensagemFalha", r.getClass().getSimpleName() + " inexistente!");
-//		}
-//		
-//		return rede;
-//	}	
+	}	
 
 	@Admin
 	public void add(@Valid MacroMotivo m) {
@@ -97,7 +98,7 @@ public class MacroMotivoController {
 			if(dao.buscarPorNome(m) == null){
 				dao.cadastrar(m);
 				result.include("mensagem", m.getClass().getSimpleName() + " adicionado com sucesso!");
-				result.use(Results.logic()).redirectTo(MacroMotivoController.class).list();
+				result.use(Results.logic()).redirectTo(this.getClass()).list();
 			}else{
 				result.include("mensagemFalha", m.getClass().getSimpleName() + ": " + m.getNome() + " já existente!");
 				result.forwardTo(this).create();
@@ -106,4 +107,31 @@ public class MacroMotivoController {
 			e.printStackTrace();
 		}
 	}
+	
+	@Admin
+	public void update(@Valid MacroMotivo m) {
+
+		validation.onErrorForwardTo(this).edit(m.getId());
+
+		try {
+
+			if(dao.buscarPorId(m) != null && dao.buscarPorNome(m).getId() == m.getId()){
+				
+				dao.editar(m);
+				result.include("mensagem", m.getClass().getSimpleName() + " alterada com sucesso!");
+				result.use(Results.logic()).redirectTo(this.getClass()).list();
+				
+			}else{
+				
+				result.include("mensagemFalha", "Falha ao alterar " + m.getClass().getSimpleName() + ".");
+				result.use(Results.logic()).redirectTo(this.getClass()).edit(m.getId());
+				
+			}
+				
+		} catch (Exception e) {
+			result.include("mensagemFalha", "Falha ao alterar " + m.getClass().getSimpleName() + ".");
+			result.use(Results.logic()).redirectTo(this.getClass()).edit(m.getId());
+		}
+	}	
+	
 }

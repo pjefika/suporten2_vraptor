@@ -1,18 +1,16 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:if test="${not empty mensagem}">
-	<span class="alert alert-success" role="alert"> <span
-		class="glyphicon glyphicon glyphicon-ok" aria-hidden="true"></span>
-		${mensagem}
-	</span>
-</c:if>
-<h2>Listar Redes</h2>
-<br>
+
+<div class="page-header">
+	<h2>Listar Redes</h2>
+</div>
+
 <a href="${linkTo[RedeController].create}">Adicionar</a>
 <table class="table table-bordered" style="font-size: 12px;">
 	<thead>
 		<tr>
 			<th>Nome</th>
+			<th>Ativa</th>
 			<th>Ações</th>
 		</tr>
 	</thead>
@@ -20,6 +18,16 @@
 		<c:forEach items="${redeList}" var="rede">
 			<tr>
 				<td>${rede.nome}</td>
+				<td>
+					<c:choose>
+					    <c:when test="${rede.ativo}">
+					        Sim
+					    </c:when>    
+					    <c:otherwise>
+					       	Não
+					    </c:otherwise>
+					</c:choose>
+				</td>
 				<td><a href="${linkTo[RedeController].edit()}${rede.id}"
 					class="btn btn-warning btn-sm"> <span
 						class="glyphicon glyphicon-pencil" aria-hidden="true"></span>

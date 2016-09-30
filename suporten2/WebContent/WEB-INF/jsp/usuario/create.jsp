@@ -3,13 +3,6 @@
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator"
 	prefix="decorator"%>
 
-<c:if test="${not empty mensagemFalha}">
-	<span class="alert alert-danger" role="alert"> <span
-		class="glyphicon glyphicon glyphicon-remove" aria-hidden="true"></span>
-		${mensagemFalha}
-	</span>
-</c:if>
-<br>
 <div class="page-header">
 	<h2>Login</h2>
 </div>

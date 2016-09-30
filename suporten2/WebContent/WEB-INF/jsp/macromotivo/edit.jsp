@@ -3,28 +3,57 @@
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator"
 	prefix="decorator"%>
 
-<c:if test="${not empty mensagemFalha}">
-	<span class="alert alert-danger" role="alert">
-	<span class="glyphicon glyphicon glyphicon-remove" aria-hidden="true"></span> 
-		${mensagemFalha}
-	</span>
-</c:if>
-<br>
 <div class="page-header">
-	<h2>Editar de Rede</h2>
+	<h2>Editar de Macro Motivo</h2>
 </div>
-<div class="form-inline">
-	<form action="${linkTo[RedeController].update}" method="post">
+
+<form action="${linkTo[MacroMotivoController].update}" method="post">
+
+	<input type="hidden" name="m.id" value="${macroMotivo.id}" /> 
 	
-	    <input type="text" name="r.id" value="${rede.id}" /> 
+	<div class="form-group">
 		<label for="nome">Nome: </label> 
-		<input type="text" class="form-control" id="nome"
-			placeholder="Nome" name="r.nome" value="${rede.nome}"> 
-		<c:if test="${not empty errors.from('rede.nome')}">
-			<span class="alert alert-warning" role="alert">
-			<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"> </span> 
-			${errors.from('rede.nome')}</span>
+		<input 
+			type="text"
+			class="form-control" 
+			id="nome" 
+			placeholder="Nome"
+			name="m.nome"
+		 	value="${macroMotivo.nome}">
+		 	
+		<c:if test="${not empty errors.from('m.nome')}">
+			<span class="alert alert-warning" role="alert"> 
+			<span
+				class="glyphicon glyphicon-exclamation-sign" 
+				aria-hidden="true"></span> 
+				${errors.from('m.nome')}
+			</span>
 		</c:if>
-		<button type="submit" class="btn btn-default">Alterar</button>
-	</form>
-</div>
+	</div>
+
+	<div class="form-group">
+		<label for="rede">Rede:</label> 
+		<select class="form-control" name="m.rede.id">
+			<option value="" selected="selected" disabled="disabled">Selecione</option>
+			<c:forEach items="${redeList}" var="rede">
+				<option value="${rede.id}" <c:if test="${macroMotivo.rede.id == rede.id}">selected="selected"</c:if>>${rede.nome}</option>
+			</c:forEach>
+		</select>
+		<c:if test="${not empty errors.from('m.nome')}">
+			<span class="alert alert-warning" role="alert"> <span
+				class="glyphicon glyphicon-exclamation-sign" aria-hidden="true">
+			</span> ${errors.from('m.rede.id')}
+			</span>
+		</c:if>
+	</div>
+	
+	<div class="form-group">
+		<div class="checkbox">
+			<label> 
+				<input type="checkbox" name="m.ativo" <c:if test="${macroMotivo.ativo}">checked="checked"</c:if>> Ativo
+			</label>
+		</div>
+	</div>
+	
+	<button type="submit" class="btn btn-default">Alterar</button>
+</form>

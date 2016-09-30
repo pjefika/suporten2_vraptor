@@ -48,4 +48,17 @@ public class RedeDAO extends AbstractDAO{
 		}
 	}
 	
+	public void excluir(Rede r) throws Exception{
+		
+		/**
+		 * Validação de Quebra de Constraint
+		 */
+		if(buscarPorId(r).getMacroMotivos().size() == 0){
+			super.excluir(r);
+		}else{
+			throw new Exception("Falha ao excluir Rede, existem Macro Motivos associados.");
+		}
+
+	}
+	
 }

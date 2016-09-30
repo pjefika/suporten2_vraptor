@@ -1,8 +1,13 @@
 package vraptor_suporten2.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -18,10 +23,13 @@ public class Rede {
 	@NotEmpty(message="Campo obrigatório!")
 	private String nome;
 	
-	private Boolean ativo = true;
+	private Boolean ativo;
 	
-	public Rede() {
+	@OneToMany(fetch = FetchType.EAGER, mappedBy="rede", cascade=CascadeType.REFRESH)
+	private List<MacroMotivo> macroMotivos;
 
+	public Rede() {
+		ativo = true;
 	}
 	
 	public Rede(String nome) {
@@ -52,6 +60,11 @@ public class Rede {
 		this.ativo = ativo;
 	}
 	
-	
+	public List<MacroMotivo> getMacroMotivos() {
+		return macroMotivos;
+	}
 
+	public void setMacroMotivos(List<MacroMotivo> macroMotivos) {
+		this.macroMotivos = macroMotivos;
+	}
 }
