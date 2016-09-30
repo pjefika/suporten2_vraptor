@@ -1,12 +1,13 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/dataTable/js/ledataTable.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/dataTable/css/ledataTable.min.css">
 <div class="page-header">
 	<h2>Listar Redes</h2>
 </div>
 
-<a href="${linkTo[RedeController].create}">Adicionar</a>
-<table class="table table-bordered tabela">
+<a class="row" href="${linkTo[RedeController].create}">Adicionar</a>
+<table class="table table-bordered table-striped tabela" id="listaRede">
 	<thead>
 		<tr>
 			<th>Nome</th>
@@ -43,6 +44,8 @@
 </table>
 
 <script>
+
+	$('#listaRede').dataTable();
 
 	$('.deletar').click(function () {
 		
