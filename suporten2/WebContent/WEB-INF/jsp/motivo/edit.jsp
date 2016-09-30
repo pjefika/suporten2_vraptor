@@ -7,7 +7,7 @@
 	<h2>Editar Motivo</h2>
 </div>
 
-<form action="${linkTo[motivoController].update}" method="post"  style="width: 50%;">
+<form action="${linkTo[MotivoController].update}" method="post"  style="width: 50%;">
 	<input type="hidden" name="m.id" value="${motivo.id}" /> 
 	
 	<div class="form-group">

@@ -7,7 +7,7 @@
 	<h2>Listar Motivos</h2>
 </div>
 
-<a class="row" href="${linkTo[motivoController].create}">Adicionar</a>
+<a class="row" href="${linkTo[MotivoController].create}">Adicionar</a>
 
 <table class="table table-bordered" id="listaMotivo" style="font-size: 12px;">
 	<thead>
@@ -37,7 +37,7 @@
 				</td>
 				
 				<td>
-					<a href="${linkTo[motivoController].edit()}${motivo.id}"
+					<a href="${linkTo[MotivoController].edit()}${motivo.id}"
 					class="btn btn-warning btn-sm"> 
 						<span
 							class="glyphicon glyphicon-pencil" aria-hidden="true">
@@ -79,7 +79,7 @@
 <div class="modal fade bs-example-modal-sm" id="modalDeletaRede"
 	tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
 	<div class="modal-dialog modal-sm" role="document">
-		<form action="${linkTo[motivoController].delete}" method="post">
+		<form action="${linkTo[MotivoController].delete}" method="post">
 			<div class="modal-content">
 
 				<div class="modal-header">
