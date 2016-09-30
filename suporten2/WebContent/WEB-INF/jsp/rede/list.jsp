@@ -6,7 +6,7 @@
 </div>
 
 <a href="${linkTo[RedeController].create}">Adicionar</a>
-<table class="table table-bordered" style="font-size: 12px;">
+<table class="table table-bordered tabela">
 	<thead>
 		<tr>
 			<th>Nome</th>

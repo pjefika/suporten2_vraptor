@@ -14,7 +14,7 @@
 		<input type="text" class="form-control" id="nome"
 			placeholder="Nome" name="r.nome" value="${rede.nome}"> 
 		<c:if test="${not empty errors.from('rede.nome')}">
-			<span class="alert alert-warning" role="alert">
+			<span class="alert alert-warning validator" role="alert">
 			<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"> </span> 
 			${errors.from('rede.nome')}</span>
 		</c:if>

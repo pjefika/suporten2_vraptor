@@ -21,7 +21,7 @@
 		 	value="${macroMotivo.nome}">
 		 	
 		<c:if test="${not empty errors.from('m.nome')}">
-			<span class="alert alert-warning" role="alert"> 
+			<span class="alert alert-warning validator" role="alert"> 
 			<span
 				class="glyphicon glyphicon-exclamation-sign" 
 				aria-hidden="true"></span> 
@@ -39,7 +39,7 @@
 			</c:forEach>
 		</select>
 		<c:if test="${not empty errors.from('m.nome')}">
-			<span class="alert alert-warning" role="alert"> <span
+			<span class="alert alert-warning validator" role="alert"> <span
 				class="glyphicon glyphicon-exclamation-sign" aria-hidden="true">
 			</span> ${errors.from('m.rede.id')}
 			</span>
