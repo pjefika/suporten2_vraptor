@@ -4,25 +4,30 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/dataTable/css/dataTables.bootstrap.min.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/dataTable/css/jquery.dataTables.min.css">
 <div class="page-header">
-	<h2>Listar Redes</h2>
+	<h2>Listar Motivos</h2>
 </div>
 
-<a class="row" href="${linkTo[RedeController].create}">Adicionar</a>
-<table class="table table-bordered table-striped tabela" id="listaRede">
+<a class="row" href="${linkTo[motivoController].create}">Adicionar</a>
+
+<table class="table table-bordered" id="listaMotivo" style="font-size: 12px;">
 	<thead>
 		<tr>
 			<th>Nome</th>
-			<th>Ativa</th>
+			<th>Rede</th>
+			<th>Macro Motivo</th>
+			<th>Ativo</th>
 			<th>Ações</th>
 		</tr>
 	</thead>
 	<tbody>
-		<c:forEach items="${redeList}" var="rede">
+		<c:forEach items="${motivoList}" var="macro">
 			<tr>
-				<td>${rede.nome}</td>
+				<td>${motivo.nome}</td>
+				<td>${motivo.macro.rede.nome}</td>
+				<td>${motivo.macro.nome}</td>
 				<td>
 					<c:choose>
-					    <c:when test="${rede.ativo}">
+					    <c:when test="${motivo.ativo}">
 					        Sim
 					    </c:when>    
 					    <c:otherwise>
@@ -30,26 +35,33 @@
 					    </c:otherwise>
 					</c:choose>
 				</td>
-				<td><a href="${linkTo[RedeController].edit()}${rede.id}"
-					class="btn btn-warning btn-sm"> <span
-						class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-				</a>
-					<button class="btn btn-danger btn-sm deletar" data-id="${rede.id}"
-						data-nome="${rede.nome}" data-toggle="modal"
+				
+				<td>
+					<a href="${linkTo[motivoController].edit()}${motivo.id}"
+					class="btn btn-warning btn-sm"> 
+						<span
+							class="glyphicon glyphicon-pencil" aria-hidden="true">
+							</span>
+					</a>
+					<button class="btn btn-danger btn-sm deletar" data-id="${motivo.id}"
+						data-nome="${motivo.nome}" data-toggle="modal"
 						data-target=".bs-example-modal-sm">
 						<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-					</button></td>
+					</button>
+				</td>
 			</tr>
 		</c:forEach>
 	</tbody>
 </table>
 
 <script>
-
-	$('#listaRede').dataTable({
-		  "pagingType": "simple"
+	setTimeout(function(){
+		$('#listaMotivo').DataTable({
+			  "pagingType": "simple"
+		});
 	});
-
+	
+	
 	$('.deletar').click(function () {
 		
 		botao = $(this);
@@ -57,8 +69,8 @@
 		var id = botao.data("id");
 		var nome = botao.data("nome");
 	
-		$("#idRede").val(id);
-		$("#nomeRede").text(nome);
+		$("#idRef").val(id);
+		$("#nomeRef").text(nome);
 		
 	});
 
@@ -67,7 +79,7 @@
 <div class="modal fade bs-example-modal-sm" id="modalDeletaRede"
 	tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
 	<div class="modal-dialog modal-sm" role="document">
-		<form action="${linkTo[RedeController].delete}" method="post">
+		<form action="${linkTo[motivoController].delete}" method="post">
 			<div class="modal-content">
 
 				<div class="modal-header">
@@ -78,9 +90,9 @@
 					<h4 class="modal-title" id="myModalLabel">Confirmação</h4>
 				</div>
 				
-				<input type="hidden" name="id" id="idRede" />
+				<input type="hidden" name="id" id="idRef" />
 				<div class="modal-body">
-					Remover Rede <b id="nomeRede"></b>?
+					Remover Motivo <b id="nomeRef"></b>?
 				</div>
 
 				<div class="modal-footer">
