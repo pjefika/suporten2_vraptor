@@ -5,7 +5,6 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
 import br.com.caelum.vraptor.Controller;
-import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Result;
 import vraptor_suporten2.controller.user.SessionUsuarioEfika;
 import webservices.EfikaUsersProxy;

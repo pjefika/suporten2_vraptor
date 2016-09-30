@@ -61,7 +61,9 @@
 					        <li><a href="${linkTo[UsuarioController].create}">Login</a></li>
 					    </c:when>    
 					    <c:otherwise>
-					        <li><a href="#">${sessionUsuarioEfika.usuario.login},</a><a href="${linkTo[UsuarioController].logout}">Logout</a></li>
+					        <li>
+					        	<a href="${linkTo[UsuarioController].logout}">${sessionUsuarioEfika.usuario.login}, Logout</a>
+				        	</li>
 					    </c:otherwise>
 					</c:choose>
 					

@@ -46,10 +46,10 @@ public class AdminInterceper {
         	if(session.getUsuario().getNivel() > 7){
         		stack.next();
         	}else{
-            	result.redirectTo(HomeController.class).restrito();
+            	result.forwardTo(HomeController.class).restrito();
         	}
 		} catch (Exception e) {
-        	result.redirectTo(HomeController.class).restrito();
+        	result.forwardTo(HomeController.class).restrito();
 		}
 	}
 
