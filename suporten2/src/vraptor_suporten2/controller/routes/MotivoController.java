@@ -1,14 +1,16 @@
 package vraptor_suporten2.controller.routes;
 
 import javax.faces.bean.RequestScoped;
+import javax.inject.Inject;
 import br.com.caelum.vraptor.Controller;
+import vraptor_suporten2.dal.MotivoDAO;
 
 @Controller
 @RequestScoped
 public class MotivoController extends AbstractCrudController implements EntityCrudControllerInterface{
 
-//	@Inject
-//	private MotivoDAO dao;
+	@Inject
+	private MotivoDAO dao;
 
 	public MotivoController() {
 
@@ -16,7 +18,7 @@ public class MotivoController extends AbstractCrudController implements EntityCr
 
 	@Override
 	public void create() {
-		// TODO Auto-generated method stub
+		result.include("macroMotivoList", dao.listar());
 		
 	}
 
