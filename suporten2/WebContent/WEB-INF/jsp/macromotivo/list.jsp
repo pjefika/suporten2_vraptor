@@ -1,7 +1,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/dataTable/js/ledataTable.min.js"></script>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/dataTable/css/ledataTable.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/dataTable/css/dataTables.bootstrap.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/dataTable/css/jquery.dataTables.min.css">
 <div class="page-header">
 	<h2>Listar Macro Motivos</h2>
 </div>
@@ -53,7 +54,9 @@
 
 <script>
 	setTimeout(function(){
-		$('#listaMacro').DataTable();
+		$('#listaMacro').DataTable({
+			  "pagingType": "simple"
+		});
 	});
 	
 	
