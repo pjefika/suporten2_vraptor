@@ -1,4 +1,4 @@
-package vraptor_suporten2.controller;
+package vraptor_suporten2.controller.routes;
 
 import java.util.List;
 
@@ -10,9 +10,9 @@ import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.view.Results;
 import vraptor_suporten2.dal.RedeDAO;
-import vraptor_suporten2.model.EntityCrudInterface;
-import vraptor_suporten2.model.Rede;
 import vraptor_suporten2.model.annotation.Admin;
+import vraptor_suporten2.model.entities.EntityCrudInterface;
+import vraptor_suporten2.model.entities.Rede;
 
 @Controller
 @RequestScoped

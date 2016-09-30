@@ -5,9 +5,9 @@
  * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
  */
 
-package webservices;
+package vraptor_suporten2.dal.webservice;
 
-public class EfikaUsersSoapBindingStub extends org.apache.axis.client.Stub implements webservices.EfikaUsers_PortType {
+public class EfikaUsersSoapBindingStub extends org.apache.axis.client.Stub implements vraptor_suporten2.dal.webservice.EfikaUsers_PortType {
     private java.util.Vector cachedSerClasses = new java.util.Vector();
     private java.util.Vector cachedSerQNames = new java.util.Vector();
     private java.util.Vector cachedSerFactories = new java.util.Vector();
@@ -44,7 +44,7 @@ public class EfikaUsersSoapBindingStub extends org.apache.axis.client.Stub imple
         param.setOmittable(true);
         oper.addParameter(param);
         oper.setReturnType(new javax.xml.namespace.QName("http://webservices/", "usuario"));
-        oper.setReturnClass(webservices.Usuario.class);
+        oper.setReturnClass(vraptor_suporten2.dal.webservice.Usuario.class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "return"));
         oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
@@ -83,7 +83,7 @@ public class EfikaUsersSoapBindingStub extends org.apache.axis.client.Stub imple
             java.lang.Class simplelistdf = org.apache.axis.encoding.ser.SimpleListDeserializerFactory.class;
             qName = new javax.xml.namespace.QName("http://webservices/", "usuario");
             cachedSerQNames.add(qName);
-            cls = webservices.Usuario.class;
+            cls = vraptor_suporten2.dal.webservice.Usuario.class;
             cachedSerClasses.add(cls);
             cachedSerFactories.add(beansf);
             cachedDeserFactories.add(beandf);
@@ -188,7 +188,7 @@ public class EfikaUsersSoapBindingStub extends org.apache.axis.client.Stub imple
 }
     }
 
-    public webservices.Usuario consultarUsuario(java.lang.String login) throws java.rmi.RemoteException {
+    public vraptor_suporten2.dal.webservice.Usuario consultarUsuario(java.lang.String login) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
@@ -212,9 +212,9 @@ public class EfikaUsersSoapBindingStub extends org.apache.axis.client.Stub imple
         else {
             extractAttachments(_call);
             try {
-                return (webservices.Usuario) _resp;
+                return (vraptor_suporten2.dal.webservice.Usuario) _resp;
             } catch (java.lang.Exception _exception) {
-                return (webservices.Usuario) org.apache.axis.utils.JavaUtils.convert(_resp, webservices.Usuario.class);
+                return (vraptor_suporten2.dal.webservice.Usuario) org.apache.axis.utils.JavaUtils.convert(_resp, vraptor_suporten2.dal.webservice.Usuario.class);
             }
         }
   } catch (org.apache.axis.AxisFault axisFaultException) {

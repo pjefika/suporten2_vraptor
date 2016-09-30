@@ -5,7 +5,8 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.persistence.Query;
-import vraptor_suporten2.model.Rede;
+
+import vraptor_suporten2.model.entities.Rede;
 
 @Stateless
 public class RedeDAO extends AbstractDAO{

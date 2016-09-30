@@ -1,4 +1,4 @@
-package vraptor_suporten2.controller;
+package vraptor_suporten2.controller.routes;
 
 import java.util.List;
 
@@ -14,9 +14,9 @@ import br.com.caelum.vraptor.validator.Validator;
 import br.com.caelum.vraptor.view.Results;
 import vraptor_suporten2.dal.MacroMotivoDAO;
 import vraptor_suporten2.dal.RedeDAO;
-import vraptor_suporten2.model.EntityCrudInterface;
-import vraptor_suporten2.model.MacroMotivo;
 import vraptor_suporten2.model.annotation.Admin;
+import vraptor_suporten2.model.entities.EntityCrudInterface;
+import vraptor_suporten2.model.entities.MacroMotivo;
 
 @Controller
 @RequestScoped

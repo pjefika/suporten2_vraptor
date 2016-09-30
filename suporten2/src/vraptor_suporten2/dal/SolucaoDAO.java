@@ -7,7 +7,8 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import vraptor_suporten2.model.Solucao;
+
+import vraptor_suporten2.model.entities.Solucao;
 
 @Stateless
 public class SolucaoDAO {

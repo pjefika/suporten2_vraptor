@@ -5,7 +5,7 @@
  * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
  */
 
-package webservices;
+package vraptor_suporten2.dal.webservice;
 
 public class Usuario  implements java.io.Serializable {
     private java.lang.String login;

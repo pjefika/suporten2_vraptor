@@ -8,8 +8,8 @@ import br.com.caelum.vraptor.BeforeCall;
 import br.com.caelum.vraptor.Intercepts;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.interceptor.AcceptsWithAnnotations;
-import vraptor_suporten2.controller.UsuarioController;
-import vraptor_suporten2.controller.user.SessionUsuarioEfika;
+import vraptor_suporten2.controller.auth.SessionUsuarioEfika;
+import vraptor_suporten2.controller.auth.UsuarioController;
 import vraptor_suporten2.model.annotation.Logado;
 
 

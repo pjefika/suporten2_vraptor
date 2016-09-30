@@ -5,7 +5,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.Query;
 
-import vraptor_suporten2.model.MacroMotivo;
+import vraptor_suporten2.model.entities.MacroMotivo;
 
 @Stateless
 public class MacroMotivoDAO extends AbstractDAO{

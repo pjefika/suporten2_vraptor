@@ -1,4 +1,4 @@
-package vraptor_suporten2.controller;
+package vraptor_suporten2.controller.auth;
 
 
 import javax.enterprise.context.RequestScoped;
@@ -6,9 +6,9 @@ import javax.inject.Inject;
 
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Result;
-import vraptor_suporten2.controller.user.SessionUsuarioEfika;
-import webservices.EfikaUsersProxy;
-import webservices.Usuario;
+import vraptor_suporten2.controller.routes.HomeController;
+import vraptor_suporten2.dal.webservice.EfikaUsersProxy;
+import vraptor_suporten2.dal.webservice.Usuario;
 
 @Controller
 @RequestScoped

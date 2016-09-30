@@ -1,4 +1,4 @@
-package vraptor_suporten2.model;
+package vraptor_suporten2.model.entities;
 
 public interface EntityCrudInterface {
 	

@@ -1,8 +1,8 @@
-package webservices;
+package vraptor_suporten2.dal.webservice;
 
-public class EfikaUsersProxy implements webservices.EfikaUsers_PortType {
+public class EfikaUsersProxy implements vraptor_suporten2.dal.webservice.EfikaUsers_PortType {
   private String _endpoint = null;
-  private webservices.EfikaUsers_PortType efikaUsers_PortType = null;
+  private vraptor_suporten2.dal.webservice.EfikaUsers_PortType efikaUsers_PortType = null;
   
   public EfikaUsersProxy() {
     _initEfikaUsersProxy();
@@ -15,7 +15,7 @@ public class EfikaUsersProxy implements webservices.EfikaUsers_PortType {
   
   private void _initEfikaUsersProxy() {
     try {
-      efikaUsers_PortType = (new webservices.EfikaUsers_ServiceLocator()).get_8();
+      efikaUsers_PortType = (new vraptor_suporten2.dal.webservice.EfikaUsers_ServiceLocator()).get_8();
       if (efikaUsers_PortType != null) {
         if (_endpoint != null)
           ((javax.xml.rpc.Stub)efikaUsers_PortType)._setProperty("javax.xml.rpc.service.endpoint.address", _endpoint);
@@ -38,7 +38,7 @@ public class EfikaUsersProxy implements webservices.EfikaUsers_PortType {
     
   }
   
-  public webservices.EfikaUsers_PortType getEfikaUsers_PortType() {
+  public vraptor_suporten2.dal.webservice.EfikaUsers_PortType getEfikaUsers_PortType() {
     if (efikaUsers_PortType == null)
       _initEfikaUsersProxy();
     return efikaUsers_PortType;
@@ -50,7 +50,7 @@ public class EfikaUsersProxy implements webservices.EfikaUsers_PortType {
     return efikaUsers_PortType.autenticarUsuario(login, senha);
   }
   
-  public webservices.Usuario consultarUsuario(java.lang.String login) throws java.rmi.RemoteException{
+  public vraptor_suporten2.dal.webservice.Usuario consultarUsuario(java.lang.String login) throws java.rmi.RemoteException{
     if (efikaUsers_PortType == null)
       _initEfikaUsersProxy();
     return efikaUsers_PortType.consultarUsuario(login);

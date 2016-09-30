@@ -5,8 +5,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import vraptor_suporten2.model.EntityCrudInterface;
-import vraptor_suporten2.model.MacroMotivo;
+import vraptor_suporten2.model.entities.EntityCrudInterface;
+import vraptor_suporten2.model.entities.MacroMotivo;
 
 @Stateless
 public class AbstractDAO {

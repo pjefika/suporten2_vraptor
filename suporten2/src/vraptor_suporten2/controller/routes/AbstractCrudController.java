@@ -1,4 +1,4 @@
-package vraptor_suporten2.controller;
+package vraptor_suporten2.controller.routes;
 
 import javax.inject.Inject;
 

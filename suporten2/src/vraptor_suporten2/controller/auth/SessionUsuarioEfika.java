@@ -1,4 +1,4 @@
-package vraptor_suporten2.controller.user;
+package vraptor_suporten2.controller.auth;
 
 import java.io.Serializable;
 
@@ -6,7 +6,7 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import webservices.Usuario;
+import vraptor_suporten2.dal.webservice.Usuario;
 
 @SessionScoped
 @Named

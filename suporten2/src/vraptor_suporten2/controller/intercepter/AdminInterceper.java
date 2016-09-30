@@ -9,8 +9,8 @@ import br.com.caelum.vraptor.Intercepts;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.interceptor.AcceptsWithAnnotations;
 import br.com.caelum.vraptor.interceptor.SimpleInterceptorStack;
-import vraptor_suporten2.controller.HomeController;
-import vraptor_suporten2.controller.user.SessionUsuarioEfika;
+import vraptor_suporten2.controller.auth.SessionUsuarioEfika;
+import vraptor_suporten2.controller.routes.HomeController;
 import vraptor_suporten2.model.annotation.Admin;
 
 
