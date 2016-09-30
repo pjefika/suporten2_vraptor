@@ -54,6 +54,7 @@
 									<li class="dropdown-header">Cadastros</li>
 									<li><a href="${linkTo[RedeController].list}">Rede</a></li>
 									<li><a href="${linkTo[MacroMotivoController].list}">Macro Motivo</a></li>
+									<li><a href="${linkTo[MotivoController].list}">Motivo</a></li>
 								</ul>
 							</li>				
 						</c:if>					
