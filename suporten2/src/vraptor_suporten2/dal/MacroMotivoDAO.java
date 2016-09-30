@@ -6,7 +6,6 @@ import javax.ejb.Stateless;
 import javax.persistence.Query;
 
 import vraptor_suporten2.model.MacroMotivo;
-import vraptor_suporten2.model.Rede;
 
 @Stateless
 public class MacroMotivoDAO extends AbstractDAO{
