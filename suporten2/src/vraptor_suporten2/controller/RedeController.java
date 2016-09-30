@@ -8,22 +8,15 @@ import javax.validation.Valid;
 
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Path;
-import br.com.caelum.vraptor.Result;
-import br.com.caelum.vraptor.validator.Validator;
 import br.com.caelum.vraptor.view.Results;
 import vraptor_suporten2.dal.RedeDAO;
+import vraptor_suporten2.model.EntityCrudInterface;
 import vraptor_suporten2.model.Rede;
 import vraptor_suporten2.model.annotation.Admin;
 
 @Controller
 @RequestScoped
-public class RedeController {
-
-	@Inject
-	private Result result;
-
-	@Inject
-	private Validator validation;
+public class RedeController extends AbstractCrudController implements EntityCrudControllerInterface{
 
 	@Inject
 	private RedeDAO dao;
@@ -54,7 +47,7 @@ public class RedeController {
 	}
 	
 	@Admin
-	public Rede delete(Integer id) {		
+	public void delete(Integer id) {		
 		
 		Rede r = new Rede();
 		r.setId(id);
@@ -75,8 +68,6 @@ public class RedeController {
 		}else{
 			result.include("mensagemFalha", r.getClass().getSimpleName() + " inexistente!");
 		}
-		
-		return rede;
 	}	
 	
 

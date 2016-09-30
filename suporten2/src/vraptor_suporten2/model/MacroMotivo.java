@@ -16,7 +16,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name="SuporteN2_MacroMotivo")
-public class MacroMotivo {
+public class MacroMotivo implements EntityCrudInterface{
 	
 	@Id
 	@GeneratedValue

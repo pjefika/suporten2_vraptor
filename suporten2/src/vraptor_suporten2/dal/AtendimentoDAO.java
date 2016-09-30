@@ -2,18 +2,12 @@ package vraptor_suporten2.dal;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import vraptor_suporten2.model.Atendimento;
 
 @Stateless
-public class AtendimentoDAO {
-
-	@PersistenceContext
-	private EntityManager entityManager;
+public class AtendimentoDAO extends AbstractDAO{
 
 	public AtendimentoDAO() {
 
@@ -31,8 +25,4 @@ public class AtendimentoDAO {
 
 	}
 	
-	public void cadastrar(Atendimento s) {
-		this.entityManager.persist(s);
-	}
-
 }

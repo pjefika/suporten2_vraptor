@@ -14,7 +14,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name="SUPORTEN2_REDE")
-public class Rede {
+public class Rede implements EntityCrudInterface{
 	
 	@Id
 	@GeneratedValue

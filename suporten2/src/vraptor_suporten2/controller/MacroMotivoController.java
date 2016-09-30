@@ -14,18 +14,13 @@ import br.com.caelum.vraptor.validator.Validator;
 import br.com.caelum.vraptor.view.Results;
 import vraptor_suporten2.dal.MacroMotivoDAO;
 import vraptor_suporten2.dal.RedeDAO;
+import vraptor_suporten2.model.EntityCrudInterface;
 import vraptor_suporten2.model.MacroMotivo;
 import vraptor_suporten2.model.annotation.Admin;
 
 @Controller
 @RequestScoped
-public class MacroMotivoController {
-
-	@Inject
-	private Result result;
-
-	@Inject
-	private Validator validation;
+public class MacroMotivoController extends AbstractCrudController implements EntityCrudControllerInterface{
 
 	@Inject
 	private MacroMotivoDAO dao;
@@ -55,7 +50,7 @@ public class MacroMotivoController {
 		MacroMotivo m = new MacroMotivo();
 		m.setId(id);
 		
-		MacroMotivo macro = dao.buscarPorId(m);
+		MacroMotivo macro = (MacroMotivo) dao.buscarPorId(m);
 		
 		result.include("redeList", redeDao.listar());
 		
@@ -67,11 +62,11 @@ public class MacroMotivoController {
 	}
 	
 	@Admin
-	public MacroMotivo delete(Integer id) {		
+	public void delete(Integer id) {		
 		
 		MacroMotivo m = new MacroMotivo();
 		m.setId(id);
-		MacroMotivo macro = dao.buscarPorId(m);
+		MacroMotivo macro = (MacroMotivo) dao.buscarPorId(m);
 		
 		if(macro != null){
 			
@@ -85,8 +80,6 @@ public class MacroMotivoController {
 		}else{
 			result.include("mensagemFalha", m.getClass().getSimpleName() + " inexistente!");
 		}
-		
-		return macro;
 	}	
 
 	@Admin
@@ -99,8 +92,8 @@ public class MacroMotivoController {
 		validation.onErrorForwardTo(this).create();
 
 		try {
-
-			if(dao.buscarPorNome(m) == null){
+			
+			if((MacroMotivo) dao.buscarPorNome(m) == null){
 				
 				if(m.getAtivo() == null){
 					m.setAtivo(false);
@@ -124,7 +117,7 @@ public class MacroMotivoController {
 
 		validation.onErrorForwardTo(this).edit(m.getId());
 		
-		MacroMotivo md = dao.buscarPorId(m);
+		MacroMotivo md = (MacroMotivo) dao.buscarPorId(m);
 
 		try {
 
