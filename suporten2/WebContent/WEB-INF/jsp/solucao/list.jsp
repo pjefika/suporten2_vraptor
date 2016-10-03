@@ -4,25 +4,25 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/dataTable/css/dataTables.bootstrap.min.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/dataTable/css/jquery.dataTables.min.css">
 <div class="page-header">
-	<h2>Listar Motivos</h2>
+	<h2>Listar Soluções</h2>
 </div>
 
-<a class="row" href="${linkTo[MotivoController].create}">Adicionar</a>
+<a class="row" href="${linkTo[SolucaoController].create}">Adicionar</a>
 
 <table class="table table-bordered" id="listaMotivo" style="font-size: 12px;">
 	<thead>
 		<tr>
 			<th>Nome</th>
-			<th>Macro Motivo</th>
+			<th>Motivo</th>
 			<th>Ativo</th>
 			<th>Ações</th>
 		</tr>
 	</thead>
 	<tbody>
-		<c:forEach items="${motivoList}" var="motivo">
+		<c:forEach items="${solucaoList}" var="solucao">
 			<tr>
-				<td>${motivo.nome}</td>
-				<td>${motivo.macroMotivo.nome}</td>
+				<td>${solucao.nome}</td>
+				<td>${solucao.motivo.nome}</td>
 				<td>
 					<c:choose>
 					    <c:when test="${motivo.ativo}">
@@ -35,14 +35,14 @@
 				</td>
 				
 				<td>
-					<a href="${linkTo[MotivoController].edit()}${motivo.id}"
+					<a href="${linkTo[SolucaoController].edit()}${solucao.id}"
 					class="btn btn-warning btn-sm"> 
 						<span
 							class="glyphicon glyphicon-pencil" aria-hidden="true">
 							</span>
 					</a>
-					<button class="btn btn-danger btn-sm deletar" data-id="${motivo.id}"
-						data-nome="${motivo.nome}" data-toggle="modal"
+					<button class="btn btn-danger btn-sm deletar" data-id="${solucao.id}"
+						data-nome="${solucao.nome}" data-toggle="modal"
 						data-target=".bs-example-modal-sm">
 						<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 					</button>
@@ -77,7 +77,7 @@
 <div class="modal fade bs-example-modal-sm" id="modalDeletaRede"
 	tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
 	<div class="modal-dialog modal-sm" role="document">
-		<form action="${linkTo[MotivoController].delete}" method="post">
+		<form action="${linkTo[SolucaoController].delete}" method="post">
 			<div class="modal-content">
 
 				<div class="modal-header">
@@ -90,7 +90,7 @@
 				
 				<input type="hidden" name="id" id="idRef" />
 				<div class="modal-body">
-					Remover Motivo <b id="nomeRef"></b>?
+					Remover Solução <b id="nomeRef"></b>?
 				</div>
 
 				<div class="modal-footer">

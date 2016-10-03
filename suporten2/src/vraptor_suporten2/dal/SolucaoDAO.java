@@ -11,7 +11,7 @@ import javax.persistence.Query;
 import vraptor_suporten2.model.entities.Solucao;
 
 @Stateless
-public class SolucaoDAO {
+public class SolucaoDAO extends AbstractDAO{
 
 	@PersistenceContext
 	private EntityManager entityManager;
@@ -30,21 +30,6 @@ public class SolucaoDAO {
 			return new ArrayList<Solucao>();
 		}
 
-	}
-	
-	public Solucao buscarPorNome(Solucao s){
-		
-		try {
-			Query query = this.entityManager.createQuery("FROM Solucao s WHERE s.nome =:param1");
-			query.setParameter("param1", s.getNome());
-			return (Solucao) query.getSingleResult();
-		} catch (Exception e) {
-			return null;
-		}
-	}
-
-	public void cadastrar(Solucao s) {
-		this.entityManager.persist(s);
 	}
 
 }

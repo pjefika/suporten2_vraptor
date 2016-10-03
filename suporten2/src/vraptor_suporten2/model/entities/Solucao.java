@@ -1,6 +1,7 @@
 package vraptor_suporten2.model.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -11,7 +12,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name="SuporteN2_Solucao")
-public class Solucao{
+public class Solucao implements EntityCrudInterface{
 	
 	@Id
 	@GeneratedValue
@@ -22,9 +23,13 @@ public class Solucao{
 	
 	private Boolean ativo = false;
 	
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.EAGER)
 	@NotNull(message="Não pode ser nulo.")
 	private Motivo motivo;
+	
+	public Solucao() {
+		motivo = new Motivo();
+	}
 
 	public Integer getId() {
 		return id;

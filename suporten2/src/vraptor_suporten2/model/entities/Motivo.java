@@ -1,6 +1,7 @@
 package vraptor_suporten2.model.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -22,10 +23,14 @@ public class Motivo implements EntityCrudInterface{
 	
 	private Boolean ativo = false;
 	
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.EAGER)
 	@NotNull
 	private MacroMotivo macroMotivo;
 
+	public Motivo() {
+		macroMotivo = new MacroMotivo();
+	}
+	
 	public Integer getId() {
 		return id;
 	}

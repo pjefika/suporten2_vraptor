@@ -36,7 +36,7 @@ public class RedeController extends AbstractCrudController implements EntityCrud
 		Rede r = new Rede();
 		r.setId(id);
 		
-		Rede rede = dao.buscarPorId(r);
+		Rede rede = (Rede) dao.buscarPorId(r);
 		
 		if(rede == null){
 			result.include("mensagemFalha", r.getClass().getSimpleName() + " inexistente!");
@@ -51,7 +51,7 @@ public class RedeController extends AbstractCrudController implements EntityCrud
 		Rede r = new Rede();
 		r.setId(id);
 		
-		Rede rede = dao.buscarPorId(r);
+		Rede rede = (Rede) dao.buscarPorId(r);
 		
 		if(rede != null){
 			
@@ -110,7 +110,7 @@ public class RedeController extends AbstractCrudController implements EntityCrud
 
 		validation.onErrorForwardTo(this).edit(r.getId());
 		
-		Rede rd = dao.buscarPorId(r);
+		Rede rd = (Rede) dao.buscarPorId(r);
 
 		try {
 

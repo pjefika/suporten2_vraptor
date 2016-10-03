@@ -26,8 +26,4 @@ public class MotivoDAO extends AbstractDAO{
 
 	}
 
-	public void cadastrar(Motivo m) {
-		this.entityManager.persist(m);
-	}
-
 }

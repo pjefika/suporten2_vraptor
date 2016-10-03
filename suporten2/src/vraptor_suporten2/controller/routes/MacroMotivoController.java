@@ -112,7 +112,11 @@ public class MacroMotivoController extends AbstractCrudController implements Ent
 	@Admin
 	public void update(@Valid MacroMotivo m) {
 
-		validation.onErrorForwardTo(this).edit(m.getId());
+		if(m.getRede().getId() == null){
+			validation.add(new SimpleMessage("m.rede.id", "Campo requerido!"));
+		}
+		
+		validation.onErrorForwardTo(this).create();
 		
 		MacroMotivo md = (MacroMotivo) dao.buscarPorId(m);
 

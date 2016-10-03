@@ -34,10 +34,58 @@ public class MotivoController extends AbstractCrudController implements EntityCr
 		result.include("macroMotivoList", macroDao.listar());
 		
 	}
+	
+	@Admin
+	public void add(@Valid Motivo m) {
+		
+		if(m.getMacroMotivo().getId() == null){
+			validation.add(new SimpleMessage("m.macroMotivo.id", "Campo requerido!"));
+		}
+		
+		validation.onErrorForwardTo(this).create();
+
+		try {
+			
+			if((Motivo) dao.buscarPorNome(m) == null){
+				
+				if(m.getAtivo() == null){
+					m.setAtivo(false);
+				}
+				
+				dao.cadastrar(m);
+				result.include("mensagem", m.getClass().getSimpleName() + " adicionado com sucesso!");
+				result.use(Results.logic()).redirectTo(this.getClass()).list();
+				
+			}else{
+				result.include("mensagemFalha", m.getClass().getSimpleName() + ": " + m.getNome() + " já existente!");
+				result.forwardTo(this).create();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 
 	@Override
+	@Admin
 	public void delete(Integer id) {
-		// TODO Auto-generated method stub
+		
+		Motivo m = new Motivo();
+		m.setId(id);
+		Motivo macro = (Motivo) dao.buscarPorId(m);
+		
+		if(macro != null){
+			
+			try {
+				dao.excluir(macro);
+				result.use(Results.logic()).redirectTo(this.getClass()).list();
+			} catch (Exception e) {
+				result.include("mensagemFalha", e.getMessage());
+			}
+			
+		}else{
+			result.include("mensagemFalha", m.getClass().getSimpleName() + " inexistente!");
+		}
 		
 	}
 
@@ -67,34 +115,36 @@ public class MotivoController extends AbstractCrudController implements EntityCr
 
 	
 	@Admin
-	public void add(@Valid Motivo m) {
-		
+	public void update(@Valid Motivo m) {
+
 		if(m.getMacroMotivo().getId() == null){
-			validation.add(new SimpleMessage("m.macromotivo.id", "Campo requerido!"));
+			validation.add(new SimpleMessage("m.macroMotivo.id", "Campo requerido!"));
 		}
 		
 		validation.onErrorForwardTo(this).create();
+		
+		Motivo md = (Motivo) dao.buscarPorId(m);
 
 		try {
-			
-			if((Motivo) dao.buscarPorNome(m) == null){
+
+			if(md != null && md.getId() == m.getId()){
 				
-				if(m.getAtivo() == null){
-					m.setAtivo(false);
-				}
-				
-				dao.cadastrar(m);
-				result.include("mensagem", m.getClass().getSimpleName() + " adicionado com sucesso!");
+				dao.editar(m);
+				result.include("mensagem", "Alterações realizadas com sucesso!");
 				result.use(Results.logic()).redirectTo(this.getClass()).list();
 				
 			}else{
-				result.include("mensagemFalha", m.getClass().getSimpleName() + ": " + m.getNome() + " já existente!");
-				result.forwardTo(this).create();
+				
+				result.include("mensagemFalha", "Falha ao alterar " + m.getClass().getSimpleName() + ".");
+				result.use(Results.logic()).forwardTo(this.getClass()).edit(m.getId());
+				
 			}
+				
 		} catch (Exception e) {
-			e.printStackTrace();
+			result.include("mensagemFalha", "Falha ao alterar " + m.getClass().getSimpleName() + ".");
+			result.use(Results.logic()).forwardTo(this.getClass()).edit(m.getId());
 		}
-	}
-	
+	}	
+
 
 }

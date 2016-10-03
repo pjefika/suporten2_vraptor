@@ -31,22 +31,6 @@
 	</div>
 
 	<div class="form-group">
-		<label for="rede">Rede:</label> 
-		<select class="form-control" name="m.rede.id">
-			<option value="" selected="selected" disabled="disabled">Selecione</option>
-			<c:forEach items="${redeList}" var="rede">
-				<option value="${rede.id}" <c:if test="${motivo.macroMotivo.rede.id == rede.id}">selected="selected"</c:if>>${rede.nome}</option>
-			</c:forEach>
-		</select>
-		<c:if test="${not empty errors.from('m.nome')}">
-			<span class="alert alert-warning validator" role="alert"> <span
-				class="glyphicon glyphicon-exclamation-sign" aria-hidden="true">
-			</span> ${errors.from('m.rede.id')}
-			</span>
-		</c:if>
-	</div>
-	
-	<div class="form-group">
 		<label for="macroMotivo">Macro Motivo:</label> 
 		<select class="form-control" name="m.macroMotivo.id">
 			<option value="" selected="selected" disabled="disabled">Selecione</option>
@@ -54,7 +38,7 @@
 				<option value="${macroMotivo.id}" <c:if test="${motivo.macroMotivo.id == macroMotivo.id}">selected="selected"</c:if>>${macroMotivo.nome}</option>
 			</c:forEach>
 		</select>
-		<c:if test="${not empty errors.from('m.nome')}">
+		<c:if test="${not empty errors.from('m.macroMotivo.id')}">
 			<span class="alert alert-warning validator" role="alert"> <span
 				class="glyphicon glyphicon-exclamation-sign" aria-hidden="true">
 			</span> ${errors.from('m.macroMotivo.id')}

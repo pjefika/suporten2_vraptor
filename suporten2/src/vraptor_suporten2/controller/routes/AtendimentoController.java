@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import javax.validation.Valid;
 
 import br.com.caelum.vraptor.Controller;
+import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.validator.Validator;
 import br.com.caelum.vraptor.view.Results;
@@ -39,11 +40,12 @@ public class AtendimentoController {
 	}
 	
 	@Logado
+	@Path("/atendimento/")
 	public void create() {
 
 	}
 
-	@Admin
+	@Logado
 	public void add(@Valid Atendimento a) {
 
 		validation.onErrorForwardTo(this).create();

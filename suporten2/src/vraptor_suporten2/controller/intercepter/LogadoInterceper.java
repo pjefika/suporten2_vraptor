@@ -4,10 +4,11 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import br.com.caelum.vraptor.BeforeCall;
+import br.com.caelum.vraptor.AroundCall;
 import br.com.caelum.vraptor.Intercepts;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.interceptor.AcceptsWithAnnotations;
+import br.com.caelum.vraptor.interceptor.SimpleInterceptorStack;
 import vraptor_suporten2.controller.auth.SessionUsuarioEfika;
 import vraptor_suporten2.controller.auth.UsuarioController;
 import vraptor_suporten2.model.annotation.Logado;
@@ -37,18 +38,18 @@ public class LogadoInterceper {
     	this.session = session;
     }
 
-	@BeforeCall
-	public void before() {
-		
-		try {			
-			if(session == null){
-				result.redirectTo(UsuarioController.class).restrito();
-			}
+    @AroundCall
+	public void around(SimpleInterceptorStack stack){
+    	
+    	try {
+        	if(session.getUsuario() != null){
+        		stack.next();
+        	}else{
+            	result.forwardTo(UsuarioController.class).create();
+        	}
 		} catch (Exception e) {
-			result.redirectTo(UsuarioController.class).restrito();
-			
+        	result.forwardTo(UsuarioController.class).create();
 		}
 	}
-
 	
 }

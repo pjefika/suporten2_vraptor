@@ -46,6 +46,7 @@
 					<li><a href="#">Home</a></li>
 					<c:if test="${not empty sessionUsuarioEfika.usuario.login}">
 						<c:if test="${sessionUsuarioEfika.admin}">
+							<li><a href="${linkTo[AtendimentoController].create}">Atendimento</a></li>
 							<li class="dropdown"><a href="#" class="dropdown-toggle"
 								data-toggle="dropdown" role="button" aria-haspopup="true"
 								aria-expanded="false">Administração <span class="caret"></span></a>
@@ -55,6 +56,7 @@
 									<li><a href="${linkTo[RedeController].list}">Rede</a></li>
 									<li><a href="${linkTo[MacroMotivoController].list}">Macro Motivo</a></li>
 									<li><a href="${linkTo[MotivoController].list}">Motivo</a></li>
+									<li><a href="${linkTo[SolucaoController].list}">Solução</a></li>
 								</ul>
 							</li>				
 						</c:if>					
