@@ -1,5 +1,6 @@
 package vraptor_suporten2.model.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -65,6 +66,19 @@ public class Rede implements EntityCrudInterface{
 	
 	public List<MacroMotivo> getMacroMotivos() {
 		return macroMotivos;
+	}
+	
+	public List<MacroMotivo> getMacroMotivosAtivos() {
+		
+		List<MacroMotivo> lista = new ArrayList<MacroMotivo>();
+				
+		for (MacroMotivo macro : this.macroMotivos) {
+			if(macro.getAtivo()){
+				lista.add(macro);
+			}
+		}
+		
+		return lista;
 	}
 
 	public void setMacroMotivos(List<MacroMotivo> macroMotivos) {

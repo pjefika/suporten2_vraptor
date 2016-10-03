@@ -28,11 +28,8 @@ public class AbstractDAO {
 	public EntityCrudInterface buscarPorId(EntityCrudInterface ob){
 		
 		try {
-			Query query = this.entityManager.createQuery("FROM " + ob.getClass().getSimpleName() + " m "
-														+ " WHERE "
-														+ " m.id =:param1");
+			Query query = this.entityManager.createQuery("FROM " + ob.getClass().getSimpleName() + " m WHERE m.id =:param1");
 			query.setParameter("param1", ob.getId());
-			query.setParameter("param2", ob.getAtivo());
 			return (EntityCrudInterface) query.getSingleResult();
 		} catch (Exception e) {
 			return null;

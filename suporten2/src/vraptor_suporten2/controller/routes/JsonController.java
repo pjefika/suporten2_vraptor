@@ -21,7 +21,11 @@ public class JsonController extends AbstractCrudController{
 	
 	@Path("/json/macromotivos/{id}")
     public void loadJson(Integer id) {
+		
 		Rede r = (Rede) dao.buscarPorId(new Rede(id));
-		result.use(Results.json()).from(r.getMacroMotivos()).serialize();
+		
+		if(r != null){
+			result.use(Results.json()).from(r.getMacroMotivosAtivos()).serialize();
+		}
     }
 }
