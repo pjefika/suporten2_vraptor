@@ -140,5 +140,4 @@ public class MacroMotivoController extends AbstractCrudController implements Ent
 			result.use(Results.logic()).forwardTo(this.getClass()).edit(m.getId());
 		}
 	}	
-	
 }

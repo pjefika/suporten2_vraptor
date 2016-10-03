@@ -29,11 +29,14 @@ public class Rede implements EntityCrudInterface{
 	private List<MacroMotivo> macroMotivos;
 
 	public Rede() {
-		ativo = true;
+	}
+	
+	public Rede(Integer id) {
+		this.id = id;
 	}
 	
 	public Rede(String nome) {
-
+		this.nome = nome;
 	}
 	
 	public Integer getId() {

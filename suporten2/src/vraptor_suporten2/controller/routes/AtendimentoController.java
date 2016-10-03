@@ -8,23 +8,18 @@ import javax.validation.Valid;
 
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Path;
-import br.com.caelum.vraptor.Result;
-import br.com.caelum.vraptor.validator.Validator;
 import br.com.caelum.vraptor.view.Results;
 import vraptor_suporten2.dal.AtendimentoDAO;
+import vraptor_suporten2.dal.RedeDAO;
 import vraptor_suporten2.model.annotation.Admin;
 import vraptor_suporten2.model.annotation.Logado;
 import vraptor_suporten2.model.entities.Atendimento;
+import vraptor_suporten2.model.entities.MacroMotivo;
+import vraptor_suporten2.model.entities.Rede;
 
 @Controller
 @RequestScoped
-public class AtendimentoController {
-
-	@Inject
-	private Result result;
-
-	@Inject
-	private Validator validation;
+public class AtendimentoController  extends AbstractCrudController{
 
 	@Inject
 	private AtendimentoDAO dao;
@@ -58,4 +53,9 @@ public class AtendimentoController {
 			e.printStackTrace();
 		}
 	}
+
+
+	
+	
+	
 }
