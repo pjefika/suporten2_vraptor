@@ -1,5 +1,6 @@
 package vraptor_suporten2.model.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -37,6 +38,10 @@ public class MacroMotivo implements EntityCrudInterface{
 	public MacroMotivo() {
 		rede = new Rede();
 	}
+	
+	public MacroMotivo(Integer id) {
+		this.id = id;
+	}
 
 	public Integer getId() {
 		return id;
@@ -73,7 +78,20 @@ public class MacroMotivo implements EntityCrudInterface{
 	public List<Motivo> getMotivos() {
 		return motivos;
 	}
-
+	
+	public List<Motivo> getMotivosAtivos() {
+		
+		List<Motivo> lista = new ArrayList<Motivo>();
+				
+		for (Motivo motivo : this.motivos) {
+			if(motivo.getAtivo()){
+				lista.add(motivo);
+			}
+		}
+		
+		return lista;
+	}
+	
 	public void setMotivos(List<Motivo> motivos) {
 		this.motivos = motivos;
 	}

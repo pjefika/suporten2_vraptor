@@ -23,7 +23,10 @@ public class AtendimentoController  extends AbstractCrudController{
 
 	@Inject
 	private AtendimentoDAO dao;
-
+	
+	@Inject
+	private RedeDAO redeDao;
+	
 	public AtendimentoController() {
 
 	}
@@ -37,7 +40,7 @@ public class AtendimentoController  extends AbstractCrudController{
 	@Logado
 	@Path("/atendimento/")
 	public void create() {
-
+		result.include("redeList", redeDao.listar());
 	}
 
 	@Logado

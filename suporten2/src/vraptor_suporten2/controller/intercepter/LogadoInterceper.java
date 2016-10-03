@@ -42,7 +42,7 @@ public class LogadoInterceper {
 	public void around(SimpleInterceptorStack stack){
     	
     	try {
-        	if(session.getUsuario() != null){
+        	if(!session.getUsuario().getLogin().isEmpty()){
         		stack.next();
         	}else{
             	result.forwardTo(UsuarioController.class).create();
