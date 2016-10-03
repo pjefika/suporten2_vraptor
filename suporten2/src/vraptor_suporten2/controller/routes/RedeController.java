@@ -11,7 +11,6 @@ import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.view.Results;
 import vraptor_suporten2.dal.RedeDAO;
 import vraptor_suporten2.model.annotation.Admin;
-import vraptor_suporten2.model.entities.EntityCrudInterface;
 import vraptor_suporten2.model.entities.Rede;
 
 @Controller

@@ -1,6 +1,7 @@
 package vraptor_suporten2.controller.routes;
 
 import java.util.List;
+
 import javax.faces.bean.RequestScoped;
 import javax.inject.Inject;
 import javax.validation.Valid;
@@ -12,7 +13,6 @@ import br.com.caelum.vraptor.view.Results;
 import vraptor_suporten2.dal.MacroMotivoDAO;
 import vraptor_suporten2.dal.MotivoDAO;
 import vraptor_suporten2.model.annotation.Admin;
-import vraptor_suporten2.model.entities.MacroMotivo;
 import vraptor_suporten2.model.entities.Motivo;
 
 @Controller

@@ -63,7 +63,7 @@ public class EfikaUsersSoapBindingStub extends org.apache.axis.client.Stub imple
          super.cachedEndpoint = endpointURL;
     }
 
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({ "unchecked", "unused" })
 	public EfikaUsersSoapBindingStub(javax.xml.rpc.Service service) throws org.apache.axis.AxisFault {
         if (service == null) {
             super.service = new org.apache.axis.client.Service();
