@@ -38,6 +38,5 @@ public class MacroMotivoDAO extends AbstractDAO{
 		}else{
 			throw new Exception("Falha ao excluir Macro Motivo, existem Motivos associados.");
 		}
-
 	}
 }

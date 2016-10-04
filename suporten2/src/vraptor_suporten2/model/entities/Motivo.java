@@ -88,4 +88,12 @@ public class Motivo implements EntityCrudInterface{
 		this.macroMotivo = macroMotivo;
 	}
 
+	public List<Solucao> getSolucaos() {
+		return solucaos;
+	}
+
+	public void setSolucaos(List<Solucao> solucaos) {
+		this.solucaos = solucaos;
+	}
+	
 }

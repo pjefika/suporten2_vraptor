@@ -35,6 +35,7 @@ public class SolucaoController extends AbstractCrudController implements EntityC
 	}
 
 	@Admin
+	@Path("/solucao")
 	public List<Solucao> list() {
 		return dao.listar();
 	}
@@ -80,15 +81,16 @@ public class SolucaoController extends AbstractCrudController implements EntityC
 			
 			try {
 				dao.excluir(solucao);
-				result.use(Results.logic()).redirectTo(this.getClass()).list();
+				result.include("mensagem", solucao.getClass().getSimpleName() + " " + solucao.getNome() + " excluído.");
 			} catch (Exception e) {
 				result.include("mensagemFalha", e.getMessage());
+			}finally {
+				result.use(Results.logic()).redirectTo(this.getClass()).list();
 			}
-			
+
 		}else{
 			result.include("mensagemFalha", m.getClass().getSimpleName() + " inexistente!");
 		}
-		
 	}
 	
 	

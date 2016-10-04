@@ -2,6 +2,7 @@ package vraptor_suporten2.dal;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.Query;
 
@@ -24,6 +25,20 @@ public class MotivoDAO extends AbstractDAO{
 			return new ArrayList<Motivo>();
 		}
 
+	}
+	
+	public void excluir(Motivo m) throws Exception{
+		
+		/**
+		 * Validação de Quebra de Constraint
+		 */
+		Motivo motivo = (Motivo) buscarPorId(m);
+		
+		if(motivo.getSolucaos().size() == 0){
+			super.excluir(m);
+		}else{
+			throw new Exception("Falha ao excluir " + m.getClass().getSimpleName() + ", existem Soluções associadas.");
+		}
 	}
 
 }

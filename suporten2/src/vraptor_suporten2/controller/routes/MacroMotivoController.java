@@ -69,9 +69,11 @@ public class MacroMotivoController extends AbstractCrudController implements Ent
 			
 			try {
 				dao.excluir(macro);
-				result.use(Results.logic()).redirectTo(this.getClass()).list();
+				result.include("mensagem", macro.getClass().getSimpleName() + " " + macro.getNome() + " excluído.");
 			} catch (Exception e) {
 				result.include("mensagemFalha", e.getMessage());
+			}finally {
+				result.use(Results.logic()).redirectTo(this.getClass()).list();
 			}
 			
 		}else{

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -15,6 +16,9 @@ public class SolucaoDAO extends AbstractDAO{
 
 	@PersistenceContext
 	private EntityManager entityManager;
+
+	@Inject
+	private AtendimentoDAO atDao;
 
 	public SolucaoDAO() {
 
@@ -30,6 +34,20 @@ public class SolucaoDAO extends AbstractDAO{
 			return new ArrayList<Solucao>();
 		}
 
+	}
+
+	public void excluir(Solucao s) throws Exception{
+
+		/**
+		 * Validação de Quebra de Constraint
+		 */
+		Solucao solucao = (Solucao) buscarPorId(s);
+
+		if((atDao.listarPorSolucao(solucao)).size() == 0){
+			super.excluir(solucao);
+		}else{
+			throw new Exception("Falha ao excluir " + s.getClass().getSimpleName() + ", existem Soluções associadas.");
+		}
 	}
 
 }
