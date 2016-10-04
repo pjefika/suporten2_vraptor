@@ -8,14 +8,14 @@
 </div>
 <form action="${linkTo[AtendimentoController].add}" method="post"
 	style="width: 55%;">
-	
+
 	<div class="form-group">
 		<div class="row">
 			<div class="col-md-8">
-				<label for="operadorLogin">Operador: </label>
-				<input type="text"
+				<label for="operadorLogin">Operador: </label> <input type="text"
 					class="form-control" id="operadorLogin"
-					placeholder="Matrícula do Operador" name="a.loginOperador" value="${atendimento.loginOperador}"/>
+					placeholder="Matrícula do Operador" name="a.loginOperador"
+					value="${atendimento.loginOperador}" />
 			</div>
 			<div class="col-md-4" style="margin-top: 30px;">
 				<c:if test="${not empty errors.from('a.loginOperador')}">
@@ -30,113 +30,100 @@
 	</div>
 
 	<div class="form-group">
-	
+
 		<div class="row">
 			<div class="col-md-8">
-					  
-				<label for="operadorLogin">Terminal / ID Fibra: </label> 
-				<input
+
+				<label for="operadorLogin">Terminal / ID Fibra: </label> <input
 					type="text" class="form-control" id="terminal"
-					placeholder="Terminal / ID Fibra" name="a.terminal" value="${atendimento.terminal}"/>
-				  
+					placeholder="Terminal / ID Fibra" name="a.terminal"
+					value="${atendimento.terminal}" />
+
 			</div>
 			<div class="col-md-4" style="margin-top: 30px;">
 				<c:if test="${not empty errors.from('a.terminal')}">
-					<small> <span class="alert alert-warning validator"> <span
-							class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-							${errors.from('a.terminal')}
+					<small> <span class="alert alert-warning validator">
+							<span class="glyphicon glyphicon-exclamation-sign"
+							aria-hidden="true"></span> ${errors.from('a.terminal')}
 					</span>
 					</small>
-				</c:if>		  
+				</c:if>
 			</div>
-		</div>	
+		</div>
 	</div>
 
 
-	
+
 	<div class="form-group">
-	
-	
+
+
 		<div class="row">
 			<div class="col-md-8">
-				<label for="rede">Rede:</label> 
-				<select class="form-control" name="" id="rede">
+				<label for="rede">Rede:</label> <select class="form-control" name=""
+					id="rede">
 					<option selected="selected" disabled="disabled">Selecione</option>
 					<c:forEach items="${redeList}" var="rede">
 						<option value="${rede.id}">${rede.nome}</option>
 					</c:forEach>
-				</select>			
+				</select>
 			</div>
-			<div class="col-md-4">
-			
-			</div>
+			<div class="col-md-4"></div>
 		</div>
 	</div>
 
 	<div class="form-group">
 		<div class="row">
 			<div class="col-md-8">
-				<label for="macro">Macro Motivo:</label>
-				 <select class="form-control"
-					name="" id="macro">
+				<label for="macro">Macro Motivo:</label> <select
+					class="form-control" name="" id="macro">
 					<option selected="selected" disabled="disabled">Selecione</option>
 				</select>
 			</div>
-			<div class="col-md-4">
-			</div>
-		</div>	
+			<div class="col-md-4"></div>
+		</div>
 	</div>
 
 
 	<div class="form-group">
 		<div class="row">
 			<div class="col-md-8">
-				<label for="motivo">Motivo:</label> 
-				<select class="form-control"
+				<label for="motivo">Motivo:</label> <select class="form-control"
 					name="" id="motivo">
 					<option selected="selected" disabled="disabled">Selecione</option>
 				</select>
 			</div>
-			<div class="col-md-4">
-			
-			</div>
-		</div>	
+			<div class="col-md-4"></div>
+		</div>
 	</div>
 
 
 	<c:if test="${not empty errors.from('a.solucao.id')}">
-		<c:set value="has-error" var="warningSelect" />
+		<c:set value="has-warning" var="warningSelect" />
 	</c:if>
 	<div class="row">
 		<div class="col-md-8">
-		
+
 			<div class="form-group ${warningSelect}">
-				<label for="solucao">Solução:</label> 
-				<select class="form-control"
+				<label for="solucao">Solução:</label> <select class="form-control"
 					name="a.solucao.id" id="solucao">
 					<option selected="selected" disabled="disabled">Selecione</option>
 				</select>
 			</div>
-		
+
 		</div>
-		<div class="col-md-4">
-		
-		</div>
-	</div>	
-	
+		<div class="col-md-4"></div>
+	</div>
+
 	<div class="row">
 		<div class="col-md-8">
 			<div class="form-group">
 				<label for="observacao">Observação:</label>
-				<textarea class="form-control" name="a.observacao" id="observacao" placeholder="Observação">
-					${atendimento.observacao}
-				</textarea>
+				<textarea class="form-control" name="a.observacao" id="observacao"
+					placeholder="Observação">${atendimento.observacao}</textarea>
 			</div>
 		</div>
-		<div class="col-md-4">
-		
-		</div>
-	</div>	
+		<div class="col-md-4"></div>
+	</div>
 
 	<button type="submit" class="btn btn-default">Registrar</button>
 </form>

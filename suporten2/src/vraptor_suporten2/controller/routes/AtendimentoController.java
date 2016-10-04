@@ -74,19 +74,16 @@ public class AtendimentoController  extends AbstractCrudController{
 			validation.add(new SimpleMessage("a.solucao.id", "Campo requerido!"));
 		}	
 
-		if(a.getObservacao() == null){
-			validation.add(new SimpleMessage("a.observacao", "Campo requerido!"));
-		}
-
 		validation.onErrorForwardTo(AtendimentoController.class).create();
 		
 		try {
 			dao.cadastrar(a);
+			this.atn = null;
 			result.include("mensagem", a.getClass().getSimpleName() + " cadastrado com sucesso!");
 			result.use(Results.logic()).redirectTo(this.getClass()).create();
 		} catch (Exception e) {
 			result.include("mensagemFalha", "Falha ao cadastrar " + a.getClass().getSimpleName() + "!");
-			result.use(Results.logic()).redirectTo(AtendimentoController.class).create();
+			result.use(Results.logic()).redirectTo(this.getClass()).create();
 		}
 	}
 }
