@@ -41,9 +41,6 @@ public class Atendimento {
 	
 	public Atendimento() {
 		solucao = new Solucao();
-		
-		terminal = null;
-		
 	}
 
 	public Integer getId() {
