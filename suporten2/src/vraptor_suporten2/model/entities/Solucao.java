@@ -21,7 +21,7 @@ public class Solucao implements EntityCrudInterface{
 	@NotEmpty(message="Campo requerido!")
 	private String nome;
 	
-	private Boolean ativo = false;
+	private Boolean ativo;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@NotNull(message="Não pode ser nulo.")

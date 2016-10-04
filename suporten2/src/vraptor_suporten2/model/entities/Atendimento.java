@@ -36,10 +36,14 @@ public class Atendimento {
 	@Lob
 	private String observacao;
 	
+	@NotNull
 	private Date dataRegistro;
 	
 	public Atendimento() {
-
+		solucao = new Solucao();
+		
+		terminal = null;
+		
 	}
 
 	public Integer getId() {

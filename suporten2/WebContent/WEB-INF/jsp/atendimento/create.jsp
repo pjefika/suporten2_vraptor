@@ -30,7 +30,7 @@
 		<input type="text"
 			class="form-control" 
 			id="terminal" 
-			placeholder="Matrícula do Operador"
+			placeholder="Terminal / ID Fibra"
 			name="a.terminal">
 		<c:if test="${not empty errors.from('a.terminal')}">
 			<small>
@@ -80,7 +80,12 @@
 			</small>			
 		</c:if>
 	</div>
-
+	
+	<div class="form-group">
+		<label for="observacao">Observação:</label> 
+		<textarea class="form-control" name="a.observacao" id="observacao"></textarea>
+	</div>
+		
 	<button type="submit" class="btn btn-default">Registrar</button>
 </form>
 <script>

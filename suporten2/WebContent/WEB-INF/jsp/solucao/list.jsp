@@ -25,7 +25,7 @@
 				<td>${solucao.motivo.nome}</td>
 				<td>
 					<c:choose>
-					    <c:when test="${motivo.ativo}">
+					    <c:when test="${solucao.ativo}">
 					        Sim
 					    </c:when>    
 					    <c:otherwise>

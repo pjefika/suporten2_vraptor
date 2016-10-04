@@ -2,7 +2,6 @@ package vraptor_suporten2.controller.intercepter;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
-import javax.inject.Named;
 
 import br.com.caelum.vraptor.AroundCall;
 import br.com.caelum.vraptor.Intercepts;
@@ -17,7 +16,6 @@ import vraptor_suporten2.model.annotation.Admin;
 @Intercepts
 @RequestScoped
 @AcceptsWithAnnotations(Admin.class)
-@Named
 public class AdminInterceper {
 	
 	@Inject
