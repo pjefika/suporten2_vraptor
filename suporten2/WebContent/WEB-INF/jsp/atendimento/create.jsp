@@ -7,14 +7,14 @@
 	<h2>Atendimento</h2>
 </div>
 <div class="row">
-	<div class="col-xs-6">
+	<div class="col-xs-8">
 		<form action="${linkTo[AtendimentoController].add}" method="post"
 			style="width: 55%;">
 			
 			<div class="form-group">
 				<div class="row">
 					<div class="col-md-8">
-						<label for="operadorLogin">Operador: </label>
+						<label for="operadorLogin">Login Operador: </label>
 						<input type="text"
 							class="form-control" id="operadorLogin"
 							placeholder="Matrícula do Operador" name="a.loginOperador" value="${atendimento.loginOperador}"/>
@@ -36,7 +36,7 @@
 				<div class="row">
 					<div class="col-md-8">
 							  
-						<label for="operadorLogin">Terminal / ID Fibra: </label> 
+						<label for="operadorLogin">Terminal / ID Fibra / Instância: </label> 
 						<input
 							type="text" class="form-control" id="terminal"
 							placeholder="Terminal / ID Fibra" name="a.terminal" value="${atendimento.terminal}"/>
@@ -143,7 +143,7 @@
 			<button type="submit" class="btn btn-default">Registrar</button>
 		</form>
 	</div>
-	<div class="col-xs-6">
+	<div class="col-xs-4">
 		<div class="panel panel-default">
 			<div class="panel-heading">Últimos 5 materiais abertos pelo Operador</div>
 			<div class="panel-body" id="materiais">
@@ -167,6 +167,9 @@
 	$(document).ready(function(){
 	
 		$("#rede").change(function(){
+			$("#macro").val('');
+			$("#motivo").val('');
+			$("#solucao").val('');
 			var rede = $(this).val();
 			$.ajax({
 				type:'GET',
@@ -183,6 +186,8 @@
 		});
 		
 		$("#macro").change(function(){
+			$("#motivo").val('');
+			$("#solucao").val('');
 			var macro = $(this).val();
 			$.ajax({
 				type:'GET',
@@ -199,6 +204,7 @@
 		});
 		
 		$("#motivo").change(function(){
+			$("#solucao").val('');
 			var motivo = $(this).val();
 			$.ajax({
 				type:'GET',
